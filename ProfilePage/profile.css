@@ -1,0 +1,26 @@
+.image img{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    left: 20px;
+    top: 20px;
+}
+
+#profpic {
+    width: 282px;
+    height: 226px;
+    left: 68px;
+    top: 128px;
+}
+
+#leftMain {
+    float: left;
+}
+
+tr{
+    background-color: red;
+}
+
+#rightMain{
+    float: right;
+}
