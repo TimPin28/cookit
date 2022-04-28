@@ -3,10 +3,69 @@
     padding: 0px;
 }
 
-#navigation-header {
+.header {
     background: #C4C4C4;
+    display: flex;
+    height: 70px;
+    padding: 10px 10px 10px 0px;
 }
 
-#home-logo {
-    width: 200px;
+.home-logo {
+    width: auto;
+    height: 60px;
+    margin-left: 10px;
+}
+
+.main-nav {
+    display: flex;
+    position: relative;
+    top: 10px;
+    left: 50px;
+    margin-top:auto;
+}
+
+.main-nav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: 10px;
+    width: 105px;
+    height: 30px;
+    background: #FF0000;
+
+    font-size: 20px;
+    color: white;
+}
+
+.search-container {
+    display: flex;
+    position: relative;
+    width:200px;
+    height: 30px;
+    top: 20px;
+    left: 40vw;
+}
+
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    left: 90vw;
+    margin-top:auto;
+}
+
+.side-nav-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 10px;
+    width: 105px;
+    height: 25px;
+    background: #0066ff;
+
+    font-size: 20px;
+    color: white;
 }
