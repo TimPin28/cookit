@@ -11,7 +11,7 @@ function checkForm()
 		if (title == "")
 		{
 			all_fields = false;
-			document.getElementById("title").style.backgroundColor = "red";
+			document.getElementById("title").style.backgroundColor = "#CD5C5C";
 		}
 		else
 			document.getElementById("title").style.backgroundColor = "white";
@@ -19,7 +19,7 @@ function checkForm()
 		if (tags == "")
 		{
 			all_fields = false;
-			document.getElementById("tags").style.backgroundColor = "red";
+			document.getElementById("tags").style.backgroundColor = "#CD5C5C";
 		}
 		else
 			document.getElementById("tags").style.backgroundColor = "white";
@@ -27,7 +27,7 @@ function checkForm()
 		if (ingredients == "")
 		{
 			all_fields = false;
-			document.getElementById("ingredients").style.backgroundColor = "red";
+			document.getElementById("ingredients").style.backgroundColor = "#CD5C5C";
 		}
 		else
 			document.getElementById("ingredients").style.backgroundColor = "white";
@@ -35,7 +35,7 @@ function checkForm()
         if (instructions == "")
 		{
 			all_fields = false;
-			document.getElementById("instructions").style.backgroundColor = "red";
+			document.getElementById("instructions").style.backgroundColor = "#CD5C5C";
 		}
 		else
 			document.getElementById("instructions").style.backgroundColor = "white";

@@ -24,28 +24,29 @@
             </div>
         </div>
         
-        <div id="left">
-           <img src="../Icon.png" alt="DishPics">
-           <br>
-           <button>Upload</button>
-        </div>
-
-        <div id="right">
-            <form action = "google.com" onSubmit = "return checkForm()" id="createForm">
-                <div>
-                    <br>
-                    <input type = "text"  placeholder = "Recipe Title" id = "title" size = 50>
-                    <br><br>
-                    <input type = "text" placeholder = "Tags" id = "tags" size = 20>
-                    <br><br>
-                    <textarea form="createForm" placeholder = "Ingredients" id="ingredients" rows="10" cols="100"></textarea>
-                    <br><br>
-                    <textarea form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea>
-                    <br><br>
-                    <input type = submit value = "Create">
-                </div>
-            </form>
-            
+        <div id="content">
+            <div id="left">
+                <img src="../Icon.png" alt="DishPics">
+                <br>
+                <button id="button">Upload</button>
+             </div>
+     
+             <div id="right">
+                 <form action = "google.com" onSubmit = "return checkForm()" id="createForm">
+                     <div>
+                         <br>
+                         <input type = "text"  placeholder = "Recipe Title" id = "title" size = 50>
+                         <br><br>
+                         <input type = "text" placeholder = "Tags" id = "tags" size = 20>
+                         <br><br>
+                         <textarea form="createForm" placeholder = "Ingredients" id="ingredients" rows="10" cols="100"></textarea>
+                         <br><br>
+                         <textarea form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea>
+                         <br><br>
+                         <input type = submit value = "Create">
+                     </div>
+                 </form>
+             </div>
         </div>
 
     </body>
