@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>Title of Recipe</title>
+        <!-- <script src = "create.js"></script> -->
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "post.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "../universal_styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <a href="../HomePage/home_page.html"><img class="home-logo" src="../Icon.png"></a>
+            <div class="main-nav">
+                <a><div class="main-nav-button">Category</div></a>
+               <a href="../CreatePage/Create.html"><div class="main-nav-button">Create</div></a>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Submit</button>
+            </div>
+            
+            <div class="side-nav">
+                <a href="../ProfilePage/Profile.html"><div class="side-nav-button">Profile</div></a>
+                <a href="../LandingPage/LandingPage.html"><div class="side-nav-button">Logout</div></a>
+            </div>
+        </div>
+        
+        <div id="content">
+            <div id="left">
+                <h1>Recipe Title
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="starcount"></span></h1>
+
+                <h2 class="datetime"></h2>
+                <h2 class="tags"></h2>
+                <br><br><br><br><br>
+
+                <p id="ingredients">Lorem ipsum dolor sit amet, consectetur adipsicing elit. Quia distinctio aliquid cupidatate perferendis fuga,
+                    sit quasi alias vero sunt non, ratione earum dolors nihil! Consequuntur paratur
+                    totam incidunt soluta expedita.</p>
+
+                <br><br><br>
+
+                <form action = "" onSubmit = "" id="createcomment">
+                    <div>
+                        <textarea form="createcomment" placeholder = "Create Comment" id="comment" rows="10" cols="100"></textarea>
+                        <br><br>
+                        <input type = submit id="button" value = "Create">
+                    </div>
+                </form>
+             </div>
+     
+             <div id="right">
+                <img src="../Icon.png"/>
+                <br><br><br><br>
+                <p id="ingredients">Lorem ipsum dolor sit amet, consectetur adipsicing elit. Dicta beatae
+                    voluptatibus veniam placeat iure unde assumenda porro neque voluptate esse sit magnam
+                    facilis labore odit, provident a ea! Nulla, minima. Lorem ipsum dolor sit amet, consectetur adipsicing elit.
+                    Eius nemo vitae, cupidatate odio magnam reprehenderit esse eum reiciendis repellendus incidunt sequi!
+                    Autem, laudantium, accusamus. Doloribus tempora alias minim laborum, provident!</p>
+             </div>
+        </div>
+
+        <div id="bottom">
+            <div id="commentbox">
+                <h2 id="commenter"></h2>
+                <h2 class="datetime"></h2>
+                <p id="comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit error quis ab
+                    perspiciatis eos inventore recusandae iste itaque numquam facilis, tenetur.
+                    Doloribus offociis quae facilis, nisi, ex similique. Animi, perferendis.</p>
+                <br><br>
+                <h2 id="commenter"></h2>
+                <h2 class="datetime"></h2>
+                <p id="comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit error quis ab
+                    perspiciatis eos inventore recusandae iste itaque numquam facilis, tenetur.
+                    Doloribus offociis quae facilis, nisi, ex similique. Animi, perferendis.</p>
+                <br><br>  
+                <h2 id="commenter"></h2>
+                <h2 class="datetime"></h2>
+                <p id="comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit error quis ab
+                    perspiciatis eos inventore recusandae iste itaque numquam facilis, tenetur.
+                    Doloribus offociis quae facilis, nisi, ex similique. Animi, perferendis.</p>
+            </div>
+            
+        </div>
+
+    </body>
+</html>
