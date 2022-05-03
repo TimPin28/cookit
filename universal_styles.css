@@ -140,3 +140,6 @@ body {
     left: 200px;
 }
 
+a:link, a:visited {
+    text-decoration: none;
+}
