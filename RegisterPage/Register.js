@@ -9,7 +9,7 @@ function checkForm()
 		if (username == "")
 		{
 			all_fields = false;
-			document.getElementById("username").style.backgroundColor = "red";
+			document.getElementById("username").style.backgroundColor = "#CD5C5C";
 		}
 		else
 			document.getElementById("username").style.backgroundColor = "white";
@@ -17,7 +17,7 @@ function checkForm()
 		if (password1 == "")
 		{
 			all_fields = false;
-			document.getElementById("password1").style.backgroundColor = "red";
+			document.getElementById("password1").style.backgroundColor = "#CD5C5C";
 		}
 		else
 			document.getElementById("password1").style.backgroundColor = "white";
@@ -25,7 +25,7 @@ function checkForm()
 		if (password2 == "")
 		{
 			all_fields = false;
-			document.getElementById("password2").style.backgroundColor = "red";
+			document.getElementById("password2").style.backgroundColor = "#CD5C5C";
 		}
 		else
 			document.getElementById("password2").style.backgroundColor = "white";
@@ -39,8 +39,8 @@ function checkForm()
 			}
 			else
 			{
-				document.getElementById("password1").style.backgroundColor = "red";
-				document.getElementById("password2").style.backgroundColor = "red";
+				document.getElementById("password1").style.backgroundColor = "#CD5C5C";
+				document.getElementById("password2").style.backgroundColor = "#CD5C5C";
 			}
 		}
 		

@@ -1,14 +1,38 @@
 <html>
     <head>
         <title>Settings</title>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "settings.css">
         <link rel = "stylesheet" type = "text/css" media = "all" href = "../universal_styles.css">
     </head>
 
     <body>
+        <div class="header">
+            <a href="../HomePage/home_page.html"><img class="home-logo" src="../Icon.png"></a>
+            <div class="main-nav">
+                <a><div class="main-nav-button">Category</div></a>
+               <a href="../CreatePage/Create.html"><div class="main-nav-button">Create</div></a>
+               <a href="../SettingsPage/Settings.html"><div class="main-nav-button">Settings</div></a>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Submit</button>
+            </div>
+            
+            <div class="side-nav">
+                <a href="../ProfilePage/Profile.html"><div class="side-nav-button">Profile</div></a>
+                <a href="../LandingPage/LandingPage.html"><div class="side-nav-button">Logout</div></a>
+            </div>
+        </div>
+
+        <br><br><br>
 
         <h1>General Account Settings</h1>
 
+        <br><br>
+
         <hr>
+
+        <br><br>
 
         <h2>Display Name</h2>
         <br><br>
@@ -18,6 +42,10 @@
 
         <h2>Change Profile Picture</h2>
         <br><br><br>
+
+        <form action = "../LandingPage/LandingPage.html" id="createForm">
+            <input type = submit id="button" value = "Delete Account">
+        </form>
 
     </body>
 </html>

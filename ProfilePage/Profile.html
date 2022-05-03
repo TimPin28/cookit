@@ -6,66 +6,98 @@
     </head>
 
     <body>
-        <div id="leftMain">
-            <img src="../Icon.png" id="profpic"/>
-            <h2>Juan Dela Cruz</h2>
-            <h3>Joined May, 2022</h3>
-            <h4>36 Following <span>20 Followers</span></h4>
-            <button>Un/Follow</button>
+        <div class="header">
+            <a href="../HomePage/home_page.html"><img class="home-logo" src="../Icon.png"></a>
+            <div class="main-nav">
+                <a><div class="main-nav-button">Category</div></a>
+               <a href="../CreatePage/Create.html"><div class="main-nav-button">Create</div></a>
+               <a href="../SettingsPage/Settings.html"><div class="main-nav-button">Settings</div></a>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Submit</button>
+            </div>
+            
+            <div class="side-nav">
+                <a href="../ProfilePage/Profile.html"><div class="side-nav-button">Profile</div></a>
+                <a href="../LandingPage/LandingPage.html"><div class="side-nav-button">Logout</div></a>
+            </div>
         </div>
 
-        <div id="rightMain">
-            <button>Sort</button>
-            <table>
-                <tr>
-                    <td>
-                        <div class="image">
-                            <img src="../Icon.png"/>
-                        </div>
-                        <div class="info">
-                            <h3>Dish 1 <span>Rating</span></h3>
-                            <h4>Tags: </h4>
-                            <h4>Date</h4>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="image">
-                            <img src="../Icon.png"/>
-                        </div>
-                        <div class="info">
-                            <h3>Dish 1 <span>Rating</span></h3>
-                            <h4>Tags: </h4>
-                            <h4>Date</h4>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="image">
-                            <img src="../Icon.png"/>
-                        </div>
-                        <div class="info">
-                            <h3>Dish 1 <span>Rating</span></h3>
-                            <h4>Tags: </h4>
-                            <h4>Date</h4>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="image">
-                            <img src="../Icon.png"/>
-                        </div>
-                        <div class="info">
-                            <h3>Dish 1 <span>Rating</span></h3>
-                            <h4>Tags: </h4>
-                            <h4>Date</h4>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+        <div id="conent">
+            <div id="leftMain">
+                <br><br><br>
+                <img src="../Icon.png" id="profpic"/>
+                <br><br><br><br>
+                <h2>Juan Dela Cruz</h2> <br><br>
+                <h3>Joined May, 2022</h3> <br><br>
+                <h4>36 Following <span>20 Followers</span></h4> <br><br>
+                <button>Un/Follow</button> 
+            </div>
+
+            <div id="rightMain">
+                <div class="dropdown">
+                    <button class="dropbtn">Sort</button>
+                    <div class="dropdown-content">
+                    <p>Alphabetical</p>
+                    <p>Rating</p>
+                    <p>Date</p>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <table>
+                    <tr>
+                        <td>
+                            <div class="image">
+                                <img src="../Icon.png"/>
+                            </div>
+                            <div class="info">
+                                <h3>Dish 1 <span>Rating</span></h3>
+                                <h4>Tags: </h4>
+                                <h4>Date</h4>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="image">
+                                <img src="../Icon.png"/>
+                            </div>
+                            <div class="info">
+                                <h3>Dish 1 <span>Rating</span></h3>
+                                <h4>Tags: </h4>
+                                <h4>Date</h4>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="image">
+                                <img src="../Icon.png"/>
+                            </div>
+                            <div class="info">
+                                <h3>Dish 1 <span>Rating</span></h3>
+                                <h4>Tags: </h4>
+                                <h4>Date</h4>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="image">
+                                <img src="../Icon.png"/>
+                            </div>
+                            <div class="info">
+                                <h3>Dish 1 <span>Rating</span></h3>
+                                <h4>Tags: </h4>
+                                <h4>Date</h4>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </body>
 </html>     

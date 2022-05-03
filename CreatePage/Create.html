@@ -7,28 +7,47 @@
     </head>
 
     <body>
-        <div id="left">
-           <img src="../Icon.png" alt="DishPics">
-           <br>
-           <button>Upload</button>
-        </div>
-
-        <div id="right">
-            <form action = "google.com" onSubmit = "return checkForm()" id="createForm">
-                <div>
-                    <br>
-                    <input type = "text"  placeholder = "Recipe Title" id = "title" size = 50>
-                    <br><br>
-                    <input type = "text" placeholder = "Tags" id = "tags" size = 20>
-                    <br><br>
-                    <textarea form="createForm" placeholder = "Ingredients" id="ingredients" rows="10" cols="100"></textarea>
-                    <br><br>
-                    <textarea form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea>
-                    <br><br>
-                    <input type = submit value = "Create">
-                </div>
-            </form>
+        <div class="header">
+            <a href="../HomePage/home_page.html"><img class="home-logo" src="../Icon.png"></a>
+            <div class="main-nav">
+                <a><div class="main-nav-button">Category</div></a>
+               <a href="../CreatePage/Create.html"><div class="main-nav-button">Create</div></a>
+               <a href="../SettingsPage/Settings.html"><div class="main-nav-button">Settings</div></a>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Submit</button>
+            </div>
             
+            <div class="side-nav">
+                <a href="../ProfilePage/Profile.html"><div class="side-nav-button">Profile</div></a>
+                <a href="../LandingPage/LandingPage.html"><div class="side-nav-button">Logout</div></a>
+            </div>
+        </div>
+        
+        <div id="content">
+            <div id="left">
+                <img src="../Icon.png" alt="DishPics">
+                <br>
+                <button id="button">Upload</button>
+             </div>
+     
+             <div id="right">
+                 <form action = "../PostPage/post.html" onSubmit = "return checkForm()" id="createForm">
+                     <div>
+                         <br>
+                         <input type = "text"  placeholder = "Recipe Title" id = "title" size = 50>
+                         <br><br>
+                         <input type = "text" placeholder = "Tags" id = "tags" size = 20>
+                         <br><br>
+                         <textarea form="createForm" placeholder = "Ingredients" id="ingredients" rows="10" cols="100"></textarea>
+                         <br><br>
+                         <textarea form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea>
+                         <br><br>
+                         <input type = submit id="button" value = "Create">
+                     </div>
+                 </form>
+             </div>
         </div>
 
     </body>
