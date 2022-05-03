@@ -24,6 +24,14 @@ img {
     width: 50%;
 }
 
+form {
+    margin: 50px 0 0 600px;
+}
+
+textarea {
+    resize: none;
+}
+
 #button {
     background-color: #4CAF50; 
     border: none;
@@ -33,7 +41,7 @@ img {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 0 0 0 100px;
+    margin: 0 0 0 200px;
 }
 
 #button:hover {
