@@ -32,7 +32,11 @@
     top: 200px;
 }
 
-tr{
+ol{
+    list-style-type: none;
+}
+
+/* tr{
     background-color: grey;
     left: 100px;
 }
@@ -40,7 +44,7 @@ tr{
 td {
     width: 800px;
     padding: 10px;
-}
+} */
 
 .dropbtn {
     background-color: #A9A9A9;

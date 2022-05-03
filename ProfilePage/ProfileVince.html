@@ -3,13 +3,14 @@
         <title>Vincent Pinawin's Profile</title>
         <link rel = "stylesheet" type = "text/css" media = "all" href = "profile.css">
         <link rel = "stylesheet" type = "text/css" media = "all" href = "../universal_styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
         <div class="header">
             <a href="../HomePage/home_page.html"><img class="home-logo" src="../Icon.png"></a>
             <div class="main-nav">
-                <a><div class="main-nav-button">Category</div></a>
+                
                <a href="../CreatePage/Create.html"><div class="main-nav-button">Create</div></a>
                <a href="../SettingsPage/Settings.html"><div class="main-nav-button">Settings</div></a>
             </div>
@@ -47,20 +48,32 @@
 
                 <br><br>
 
-                <table>
-                    <tr>
-                        <td>
-                            <a href="../PostPage/PostBagnet.html"><div class="image">
-                                <img src="../SampleData/Bagnet.jpg"/>
+                <ol>
+                    <li>
+                        <div class="post"><a href="../PostPage/PostBagnet.html">
+                            <div class=food-thumbnail>
+                                <img src="../SampleData/Bagnet.jpg">
                             </div>
-                            <div class="info">
-                                <h3>Fried Chicken <span>5 Star</span></h3>
-                                <h4>Tags: Pork, Fried, 1 hour</h4>
-                                <h4>02-May-2022 11:30 A.M</h4>
-                            </div></a>
-                        </td>
-                    </tr>
-                </table>
+                            <div class="post-details">
+                                <div class="title">
+                                    <h2>Crispy Bagnet</h2>
+                                    <div class="rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                    </div>   
+                                </div>             
+                                <div class="tags">pork, fried, 1 hour</div>
+                                <div class="user">Vincent Pinawin</div>
+            
+                                <div class="date">02-May-2022 11:30 AM</div>
+                            </div>
+                        </a></div>
+                    </li>
+                </ol>
+
             </div>
         </div>
     </body>

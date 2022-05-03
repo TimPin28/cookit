@@ -133,8 +133,9 @@ body {
 }
 
 .post-details {
-    position: absolute;
-    left: 200px;
+    position: relative;
+    left: 10px;
+    float:right;
 }
 
 a:link, a:visited {
