@@ -86,3 +86,57 @@ body {
     font-size: 20px;
     color: white;
 }
+
+.checked {
+    color:orange;
+}
+
+/* Line Posts */
+
+.content {
+    margin: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.post {
+    display: flex;
+    align-items:center;
+    background-color: #F2DD6E;
+    height: 100px;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 10px;
+}
+
+.food-thumbnail{
+    position: relative;
+    display:flex;
+    float:left;
+    height: 100px;
+    width: 150px;
+    justify-content: center;
+}
+
+.food-thumbnail img {
+    max-height: 100px;
+    max-width: 150px;
+}
+
+.post-details .title{
+    display: inline-flex;
+}
+
+.title h2{
+}
+
+.title .rating{
+    position: relative;
+    left: 10px;
+    top: 5px;
+}
+
+.post-details {
+    position: absolute;
+    left: 200px;
+}
+
