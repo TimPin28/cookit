@@ -126,9 +126,6 @@ body {
     display: inline-flex;
 }
 
-.title h2{
-}
-
 .title .rating{
     position: relative;
     left: 10px;
@@ -142,4 +139,5 @@ body {
 
 a:link, a:visited {
     text-decoration: none;
+    color:black;
 }
