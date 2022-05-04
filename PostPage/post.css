@@ -52,3 +52,11 @@ textarea {
     margin-left: 400px;
     overflow: auto;
 }
+
+span.datetime {
+    margin-left: 6px;
+    font: Arial;
+    font-size: 12px;
+    color: #998;
+    font-weight: normal;
+}
