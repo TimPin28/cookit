@@ -53,6 +53,16 @@ textarea {
     overflow: auto;
 }
 
+.commentbox {
+    background-color: #F2DD6E;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #F2DD6E;
+    word-wrap: break-word;
+}
+
 span.datetime {
     margin-left: 6px;
     font: Arial;
