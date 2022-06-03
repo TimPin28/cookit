@@ -4,7 +4,7 @@
 #left {
     width: 30%;
     padding: 10px;
-    margin-left: 300px;
+    margin-left: 75px;
     margin-top: 100px;
     top: 300px;
     float: left;
@@ -12,8 +12,9 @@
 
 #right{
     padding: 10px;
-    right: 100px;
+    margin-left: 500px;
     margin-top: 150px;
+    float: right;
 }
 
 #button {
@@ -26,7 +27,6 @@
     display: inline-block;
     font-size: 16px;
     margin: 50px 0 0 100px;
-
 }
 
 #button:hover {

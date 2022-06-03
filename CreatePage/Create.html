@@ -31,26 +31,23 @@
         
         <div id="content">
             <div id="left">
-                <img src="../Icon.png" alt="DishPics">
-                <br>
-                <button id="button">Upload</button>
-             </div>
-     
-             <div id="right">
-                 <form action = "" onSubmit = "return checkForm()" id="createForm">
-                     <div>
-                         <br>
-                         <input name = "title" type = "text"  placeholder = "Recipe Title" id = "title" size = 50>
-                         <br><br>
-                         <input name = "tags" type = "text" placeholder = "Tags" id = "tags" size = 20>
-                         <br><br>
-                         <textarea name = "ingredients" form="createForm" placeholder = "Ingredients" id="ingredients" rows="10" cols="100"></textarea>
-                         <br><br>
-                         <textarea name = "instructions" form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea>
-                         <br><br>
-                         <input type = submit id="button" value = "Create">
-                     </div>
-                 </form>
+                <form action = "" onSubmit = "return checkForm()" id="createForm">
+                    <div>
+                        <br>
+                        <input name = "title" type = "text"  placeholder = "Recipe Title" id = "title" size = 50>
+                        <br><br>
+                        <input name = "tags" type = "text" placeholder = "Tags" id = "tags" size = 20>
+                        <br><br>
+                        <textarea name = "ingredients" form="createForm" placeholder = "Ingredients" id="ingredients" rows="10" cols="100"></textarea>
+                        <br><br>
+                        <textarea name = "instructions" form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea>
+                        <br><br>
+                        <input type = submit id="button" value = "Create">
+                    </div>
+                </form>
+            </div>
+            <div id="right">
+                <input name = "image" type = "file" accept = "image/png, image/jpeg" multiple>
              </div>
         </div>
 
