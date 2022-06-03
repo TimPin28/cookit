@@ -7,8 +7,8 @@ mongoose.connect('mongodb://localhost/cookitDB',
 
 const fileUpload = require('express-fileupload');
 
-// const Post = require('./database/models/Post');
-// const path = require('path');
+const Post = require('./database/models/Post');
+const path = require('path');
 
 app.use(express.json()); 
 app.use(express.urlencoded({extended: true})); 
@@ -19,8 +19,25 @@ var hbs = require('hbs');
 const async = require('hbs/lib/async');
 app.set('view engine', 'hbs');
 
+app.post('/submit-post', function(req, res) {
+    const {image} = req.files
+    image.mv(path.resolve(__dirname, 'public/images', image.name),(error) => {
+         Post.create({ 
+            ...req.body,
+            image:'/images/'+image.name
+        }, (error,post) => {
+            res.redirect('/')
+        })
+    })
+});
+
+app.get('/create', async(req,res) => {
+    const posts = await Post.find({}) // Perform MongoDB query inside {} and store results into posts
+    res.render('create',{posts})
+})
+
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '\\' + './HomePage/home_page.html');
+    res.sendFile(__dirname + '\\' + './public/Create.html');
 });
 
 var server = app.listen(3000, function() {
