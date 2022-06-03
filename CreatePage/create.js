@@ -3,8 +3,7 @@ function checkForm()
 		var title = document.getElementById("title").value;
 		var tags = document.getElementById("tags").value;
 		var ingredients = document.getElementById("ingredients").value;	
-        var instructions = document.getElementById("instructions").value;		
-
+        var instructions = document.getElementById("instructions").value;
 
 		var valid = false;		
 		var all_fields = true;
@@ -39,7 +38,7 @@ function checkForm()
 		}
 		else
 			document.getElementById("instructions").style.backgroundColor = "white";
-
+		
 		if (all_fields == true)
 		{
 			valid = true;
