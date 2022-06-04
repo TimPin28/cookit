@@ -44,4 +44,5 @@ img{
 
 textarea{
     resize: none;
+    word-wrap: break-word;
 }

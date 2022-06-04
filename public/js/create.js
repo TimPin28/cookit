@@ -1,5 +1,4 @@
-function checkForm()
-	{
+function checkForm() {
 		var title = document.getElementById("title").value;
 		var tags = document.getElementById("tags").value;
 		var ingredients = document.getElementById("ingredients").value;	
@@ -46,6 +45,20 @@ function checkForm()
         else 
             valid = false;
 		
-		return valid;
-			
+		return valid;	
+}
+
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+
+		reader.onload = function (e) {
+			$('#foodimg')
+				.attr('src', e.target.result)
+				.width(500)
+				.height(500);
+		};
+
+		reader.readAsDataURL(input.files[0]);
 	}
+}

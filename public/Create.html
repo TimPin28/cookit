@@ -2,6 +2,8 @@
     <head>
         <title>Create a Dish</title>
         <script src = "js/create.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
         <link rel = "stylesheet" type = "text/css" media = "all" href = "css/create.css">
         <link rel = "stylesheet" type = "text/css" media = "all" href = "css/universal_styles.css">
     </head>
@@ -42,14 +44,15 @@
                         <br><br>
                         <textarea name = "instructions" form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea>
                         <br><br>
-                        <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg">
+                        <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg" onchange="readURL(this);"/>
                         <br><br>
                         <input type = submit id="button" value = "Create">
                     </div>
                 </form>
             </div>
             <div id="right">
-                <a href="/create">View all posts</a>
+                <img id = "foodimg" src = "#" alt = "Your Image"/>
+                <!-- <a href="/create">View all posts</a> -->
             </div>
         </div>
 
