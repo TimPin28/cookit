@@ -36,9 +36,13 @@ app.get('/create', async(req,res) => {
     res.render('create',{posts})
 })
 
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '\\' + './public/Create.html');
-});
+// app.get('/', function(req, res) {
+//     res.sendFile(__dirname + '\\' + './views/home_page.hbs');
+// });
+
+app.get('/',(req,res) => {
+    res.render('home_page');
+})
 
 var server = app.listen(3000, function() {
     console.log("Node Server is Running at Port 3000");
