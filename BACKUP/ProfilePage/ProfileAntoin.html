@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Antoinne Salvador's Profile</title>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "profile.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "../universal_styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <a href="../HomePage/home_page.html"><img class="home-logo" src="../Icon.png"></a>
+            <div class="main-nav">
+                
+               <a href="../CreatePage/Create.html"><div class="main-nav-button">Create</div></a>
+               <a href="../SettingsPage/Settings.html"><div class="main-nav-button">Settings</div></a>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Search...">
+                <button type="submit">
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#666666" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="side-nav">
+                <a href="../ProfilePage/Profile.html"><div class="side-nav-button">Profile</div></a>
+                <a href="../LandingPage/LandingPage.html"><div class="side-nav-button">Logout</div></a>
+            </div>
+        </div>
+
+        <div id="conent">
+            <div id="leftMain">
+                <br><br><br>
+                <img src="../SampleData/Pfp3.jpg" id="profpic"/>
+                <br><br><br><br>
+                <h2>Antoinne Salvador</h2> <br><br>
+                <h3>Dec 14, 2021</h3> <br><br>
+                <h4>4 Following <span>4 Followers</span></h4> <br><br>
+                <button id="follow">Un/Follow</button> 
+            </div>
+
+            <div id="rightMain">
+                <div class="dropdown">
+                    <button class="dropbtn">Sort</button>
+                    <div class="dropdown-content">
+                    <p>Alphabetical</p>
+                    <p>Rating</p>
+                    <p>Date</p>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <ol>
+                    <li>
+                        <div class="post"><a href="../PostPage/PostFlan.html">
+                            <div class=food-thumbnail>
+                                <img src="../SampleData/LecheFlan.jpg">
+                            </div>
+                            <div class="post-details">
+                                <div class="title">
+                                    <h2>Leche Flan</h2>
+                                    <div class="rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                    </div>   
+                                </div>             
+                                <div class="tags">55 mins, sweet, dessert</div>
+                                <div class="user">Antoinne Salvador</div>
+            
+                                <div class="date">02-May-2022 04:30 PM</div>
+                            </div>
+                        </a></div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </body>
+</html>     

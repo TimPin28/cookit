@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Create a Dish</title>
+        <script src = "js/create.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/balloon/ckeditor.js"></script>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "css/create.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "css/universal_styles.css">
+    </head>
+
+    <body>
+
+        {{> header}}
+        
+        <div id="content">
+            <div id="left">
+                <form action = "/submit-post" method="post" enctype="multipart/form-data" onSubmit = "return checkForm()" id="createForm">
+                    <div>
+                        <br>
+                        <input name = "title" type = "text"  placeholder = "Recipe Title" id = "title" size = 50>
+                        <br><br>
+                        <input name = "tags" type = "text" placeholder = "Tags" id = "tags" size = 20>
+                        <br><br>
+                        <textarea name = "ingredients" form="createForm" placeholder = "Ingredients" id="ingredients" rows="10" cols="100"></textarea>
+                        {{!-- <div id = "ingredientsarea">
+                            <p id = "ingredients">Ingredients</p>
+                        </div>
+                        <script>
+                            BalloonEditor
+                                .create( document.querySelector( '#ingredientsarea' ) )
+                                .catch( error => {
+                                    console.error( error );
+                                } );
+                        </script> --}}
+                        <br><br>
+                        <textarea name = "instructions" form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea>
+                        {{!-- <div id = "instructionsarea">
+                            <p id = "instructions">Instructions</p>
+                        </div>
+                        <script>
+                            BalloonEditor
+                                .create( document.querySelector( '#instructionsarea' ) )
+                                .catch( error => {
+                                    console.error( error );
+                                } );
+                        </script> --}}
+                        <br><br>
+                        <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg" onchange="readURL(this);"/>
+                        <br><br>
+                        <input type = submit id="button" value = "Create">
+                    </div>
+                </form>
+            </div>
+            <div id="right">
+                <img id = "foodimg" src = "#" alt = "Your Image"/>
+                <a href="/viewPost">View all posts</a> 
+                {{!-- AFTER MAG CREATE IT SHOULD GO TO ITS POST --}}
+            </div>
+        </div>
+
+    </body>
+</html>
