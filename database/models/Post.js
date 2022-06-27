@@ -6,7 +6,6 @@ const PostSchema = new mongoose.Schema({
     ingredients: String,
     instructions: String,
     image: String,
-    rating: Number
 });
 
 const Post = mongoose.model('Post', PostSchema);
