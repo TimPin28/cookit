@@ -10,6 +10,8 @@ const fileUpload = require('express-fileupload');
 const Post = require('./database/models/Post');
 const path = require('path');
 
+// const routes = require(`./routes/routes.js`);
+
 app.use(express.json()); 
 app.use(express.urlencoded({extended: true})); 
 app.use(express.static('public')); 
@@ -36,12 +38,14 @@ app.get('/create', async(req,res) => {
     res.render('create',{posts})
 })
 
-// app.get('/', function(req, res) {
-//     res.sendFile(__dirname + '\\' + './views/home_page.hbs');
-// });
+// app.use(`/`, routes);
 
 app.get('/',(req,res) => {
     res.render('home_page');
+})
+
+app.get('/Create',(req,res) => {
+    res.render('Create.html');
 })
 
 var server = app.listen(3000, function() {
