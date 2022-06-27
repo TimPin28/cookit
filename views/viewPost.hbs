@@ -7,19 +7,13 @@
     </head>
 
     <body>
-        {{#each posts}}
-        
         {{> header}}
+
+        {{#each posts}}
         
         <div id="content">
             <div id="left">
                 <h1>{{this.title}}
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="starcount"></span></h1>
 
                 <h3 class="tags">{{this.tags}}</h3>
                 <a href="../ProfilePage/ProfileVince.html"><h3>Vincent Pinawin</h3></a>
@@ -28,22 +22,16 @@
                 <br><br><br>
 
                 <h2>Ingredients</h2>
-
                 <ul>
                     <li> {{this.ingredients}} </li>
                 </ul>
 
-                
-
                 <br><br><br>
 
                 <h2>Instructions</h2>
-
                 <ol>
                     <li> {{this.instructions}} </li>
                 </ol>
-
-                
 
              </div>
      
