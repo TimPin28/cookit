@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Timothy Pinawin's Profile</title>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "profile.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "../universal_styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        {{> header}}
+
+        <div id="conent">
+            <div id="leftMain">
+                <br><br><br>
+                <img src="../SampleData/Pfp1.jpg" id="profpic"/>
+                <br><br><br><br>
+                <h2>Timothy Pinawin</h2> <br><br>
+                <h3>Dec 31, 2021</h3> <br><br>
+                <h4>4 Following <span>4 Followers</span></h4> <br><br>
+                <button id="follow">Un/Follow</button> 
+            </div>
+
+            <div id="rightMain">
+                <div class="dropdown">
+                    <button class="dropbtn">Sort</button>
+                    <div class="dropdown-content">
+                    <p>Alphabetical</p>
+                    <p>Rating</p>
+                    <p>Date</p>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <ol>
+                    <li>
+                        <div class="post"><a href="../PostPage/PostChicken.html">
+                            <div class=food-thumbnail>
+                                <img src="../SampleData/Chicken.jpg">
+                            </div>
+                            <div class="post-details">
+                                <div class="title">
+                                    <h2>Crispy Fried Chicken</h2>
+                                    <div class="rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star "></span>
+                                    </div>   
+                                </div>             
+                                <div class="tags">chicken, fried, 35 mins</div>
+                                <div class="user">Timothy Pinawin</div>
+            
+                                <div class="date">02-May-2022 01:30 PM</div>
+                            </div>
+                        </a></div>
+                    </li>
+                </ol>
+
+            </div>
+        </div>
+    </body>
+</html>     

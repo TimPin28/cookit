@@ -42,16 +42,21 @@ app.post('/submit-post', function(req, res) {
 // app.use(`/`, routes);
 
 app.get('/',(req,res) => {
-    res.render('home_page');
+    res.render('index');
 })
 
-app.get('/Create',(req,res) => {
-    res.render('Create');
+app.get('/create',(req,res) => {
+    res.render('create');
 })
 
-app.get('/Settings',(req,res) => {
-    res.render('Settings');
+app.get('/settings',(req,res) => {
+    res.render('settings');
 })
+
+app.get('/profile',(req,res) => {
+    res.render('profile');
+})
+
 
 var server = app.listen(3000, function() {
     console.log("Node Server is Running at Port 3000");

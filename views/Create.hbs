@@ -10,7 +10,7 @@
     </head>
 
     <body>
-        
+
         {{> header}}
         
         <div id="content">
@@ -22,8 +22,8 @@
                         <br><br>
                         <input name = "tags" type = "text" placeholder = "Tags" id = "tags" size = 20>
                         <br><br>
-                        <!-- <textarea name = "ingredients" form="createForm" placeholder = "Ingredients" id="ingredients" rows="10" cols="100"></textarea> -->
-                        <div id = "ingredientsarea">
+                        <textarea name = "ingredients" form="createForm" placeholder = "Ingredients" id="ingredients" rows="10" cols="100"></textarea>
+                        {{!-- <div id = "ingredientsarea">
                             <p id = "ingredients">Ingredients</p>
                         </div>
                         <script>
@@ -32,10 +32,10 @@
                                 .catch( error => {
                                     console.error( error );
                                 } );
-                        </script>
+                        </script> --}}
                         <br><br>
-                        <!-- <textarea name = "instructions" form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea> -->
-                        <div id = "instructionsarea">
+                        <textarea name = "instructions" form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea>
+                        {{!-- <div id = "instructionsarea">
                             <p id = "instructions">Instructions</p>
                         </div>
                         <script>
@@ -44,7 +44,7 @@
                                 .catch( error => {
                                     console.error( error );
                                 } );
-                        </script>
+                        </script> --}}
                         <br><br>
                         <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg" onchange="readURL(this);"/>
                         <br><br>
@@ -54,7 +54,8 @@
             </div>
             <div id="right">
                 <img id = "foodimg" src = "#" alt = "Your Image"/>
-                <a href="/create">View all posts</a>
+                <a href="/viewPost">View all posts</a> 
+                {{!-- AFTER MAG CREATE IT SHOULD GO TO ITS POST --}}
             </div>
         </div>
 
