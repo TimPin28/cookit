@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>{{this.title}}t</title>
+        <title>{{title}}</title>
         <link rel = "stylesheet" type = "text/css" media = "all" href = "css/create.css">
         <link rel = "stylesheet" type = "text/css" media = "all" href = "css/universal_styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -10,7 +10,7 @@
         
         {{> header}}
 
-        {{> posts}}
+        {{> post_content title=title tags=tags ingredients=ingredients instructions=instructions image=image}}
         
     </body>
 </html> 

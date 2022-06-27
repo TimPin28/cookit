@@ -29,34 +29,44 @@ app.post('/submit-post', function(req, res) {
             ...req.body,
             image:'/images/'+image.name
         }, (error,post) => {
-            res.redirect('/')
-        })
+                var string = encodeURIComponent(req.body.title);
+                res.redirect('/viewPost?valid=' + string)
+        }) 
     })
+
 });
 
-// app.get('/create', async(req,res) => {
-//     const posts = await Post.find({}) // Perform MongoDB query inside {} and store results into posts
-//     res.render('create',{posts})
+//display after submit
+app.get('/viewPost', async(req,res) => {
+    var passed = req.query.valid;
+    const posts =  await Post.findOne({title:passed});
+    res.render('viewPost', posts);
+})
+
+//home to display
+// app.get('/viewPost2', async(req,res) => {
+//     const posts = await Post.findOne({...req.body.title})
+//     res.render('viewPost', posts)
 // })
+
 
 // app.use(`/`, routes);
 
-app.get('/',(req,res) => {
+app.get('/', (req,res) => {
     res.render('index');
 })
 
-app.get('/create',(req,res) => {
+app.get('/create', (req,res) => {
     res.render('create');
 })
 
-app.get('/settings',(req,res) => {
+app.get('/settings', (req,res) => {
     res.render('settings');
 })
 
-app.get('/profile',(req,res) => {
+app.get('/profile', (req,res) => {
     res.render('profile');
 })
-
 
 var server = app.listen(3000, function() {
     console.log("Node Server is Running at Port 3000");
