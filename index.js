@@ -20,6 +20,7 @@ app.use(fileUpload());
 var hbs = require('hbs');
 const async = require('hbs/lib/async');
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + `/views/partials`);
 
 app.post('/submit-post', function(req, res) {
     const {image} = req.files
@@ -33,10 +34,10 @@ app.post('/submit-post', function(req, res) {
     })
 });
 
-app.get('/create', async(req,res) => {
-    const posts = await Post.find({}) // Perform MongoDB query inside {} and store results into posts
-    res.render('create',{posts})
-})
+// app.get('/create', async(req,res) => {
+//     const posts = await Post.find({}) // Perform MongoDB query inside {} and store results into posts
+//     res.render('create',{posts})
+// })
 
 // app.use(`/`, routes);
 
@@ -45,7 +46,11 @@ app.get('/',(req,res) => {
 })
 
 app.get('/Create',(req,res) => {
-    res.render('Create.html');
+    res.render('Create');
+})
+
+app.get('/Settings',(req,res) => {
+    res.render('Settings');
 })
 
 var server = app.listen(3000, function() {
