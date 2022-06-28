@@ -34,26 +34,26 @@ app.use(fileUpload());
 app.use(express.static('public')); 
 
 
-app.post('/submit-post', function(req, res) {
-    const {image} = req.files
-    image.mv(path.resolve(__dirname, 'public/images', image.name),(error) => {
-         Post.create({ 
-            ...req.body,
-            image:'/images/'+image.name
-        }, (error,post) => {
-                var string = encodeURIComponent(req.body.title);
-                res.redirect('/viewPost?valid=' + string)
-        }) 
-    })
+// app.post('/submit-post', function(req, res) {
+//     const {image} = req.files
+//     image.mv(path.resolve(__dirname, 'public/images', image.name),(error) => {
+//          Post.create({ 
+//             ...req.body,
+//             image:'/images/'+image.name
+//         }, (error,post) => {
+//                 var string = encodeURIComponent(req.body.title);
+//                 res.redirect('/viewPost?valid=' + string)
+//         }) 
+//     })
 
-});
+// });
 
 //display after submit
-app.get('/viewPost', async(req,res) => {
-    var passed = req.query.valid;
-    const posts =  await Post.findOne({title:passed});
-    res.render('viewPost', posts);
-})
+// app.get('/viewPost', async(req,res) => {
+//     var passed = req.query.valid;
+//     const posts =  await Post.findOne({title:passed});
+//     res.render('viewPost', posts);
+// })
 
 //home to display
 // app.get('/viewPost2', async(req,res) => {

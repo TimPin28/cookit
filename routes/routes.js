@@ -7,6 +7,7 @@ app.get('/', controller.getIndex);
 app.get('/create', controller.getCreate);
 app.get('/settings', controller.getSettings);
 app.get('/profile', controller.getProfile);
-//app.post('/submit-post', controller.submitPost);
+app.post('/submit-post', controller.submitPost);
+app.get('/viewPost', controller.viewPost);
 
 module.exports = app;
