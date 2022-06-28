@@ -1,9 +1,11 @@
 const express = require('express');
-const app = new express();
-
+const session = require('express-session');
+const flash = require('connect-flash');
+const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/cookitDB',
-{useNewURLParser: true, useUnifiedTopology: true}); 
+
+// mongoose.connect('mongodb://localhost/cookitDB',
+// {useNewURLParser: true, useUnifiedTopology: true}); 
 
 const fileUpload = require('express-fileupload');
 
@@ -11,6 +13,11 @@ const Post = require('./database/models/Post');
 const path = require('path');
 
 // const routes = require(`./routes/routes.js`);
+
+const app = new express();
+app.listen(3000, function() {
+    console.log("Node Server is Running at Port 3000");
+});
 
 app.use(express.json()); 
 app.use(express.urlencoded({extended: true})); 
@@ -68,6 +75,3 @@ app.get('/profile', (req,res) => {
     res.render('profile');
 })
 
-var server = app.listen(3000, function() {
-    console.log("Node Server is Running at Port 3000");
-});
