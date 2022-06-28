@@ -1,4 +1,6 @@
 const db = require('../database/models/connection.js');
+const path = require('path');
+const Post = require('../database/models/Post.js');
 
 const controller = {
     getIndex: function(req, res) {
