@@ -1,33 +1,38 @@
 const express = require('express');
+const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo');
-const mongoose = require('mongoose');
-
-// mongoose.connect('mongodb://localhost/cookitDB',
-// {useNewURLParser: true, useUnifiedTopology: true}); 
-
 const fileUpload = require('express-fileupload');
 
+const mongoose = require('./database/models/connection');
 const Post = require('./database/models/Post');
-const path = require('path');
 
-// const routes = require(`./routes/routes.js`);
+// routes imports
+const routes = require(`./routes/routes.js`);
 
+// create express application
 const app = new express();
-app.listen(3000, function() {
+const port = 3000;
+
+// listen to port
+app.listen(port, function() {
     console.log("Node Server is Running at Port 3000");
 });
 
-app.use(express.json()); 
-app.use(express.urlencoded({extended: true})); 
-app.use(express.static('public')); 
-app.use(fileUpload());
-
+// handlebars setup
 var hbs = require('hbs');
 const async = require('hbs/lib/async');
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + `/views/partials`);
+
+app.use(express.json()); 
+app.use(express.urlencoded({extended: true})); 
+app.use(fileUpload());
+
+// serve static files
+app.use(express.static('public')); 
+
 
 app.post('/submit-post', function(req, res) {
     const {image} = req.files
@@ -57,21 +62,5 @@ app.get('/viewPost', async(req,res) => {
 // })
 
 
-// app.use(`/`, routes);
-
-app.get('/', (req,res) => {
-    res.render('index');
-})
-
-app.get('/create', (req,res) => {
-    res.render('create');
-})
-
-app.get('/settings', (req,res) => {
-    res.render('settings');
-})
-
-app.get('/profile', (req,res) => {
-    res.render('profile');
-})
+app.use(`/`, routes);
 
