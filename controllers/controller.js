@@ -4,14 +4,12 @@ const Post = require('../database/models/Post.js');
 
 const controller = {
     getIndex: async(req, res) => {
-        const posts = await Post.find({}).sort({createdAt: -1}) 
-        console.log(posts);
+        const posts = await Post.find({}).sort({createdAt: -1})
         res.render('index', {posts});
     },
 
     getAlpbt: async(req, res) => {
         const posts = await Post.find({}).sort({title: 1}) 
-        console.log(posts);
         res.render('index', {posts});
     },
 
@@ -57,8 +55,6 @@ const controller = {
         await db.findOne(Post, {title:passed}, null, function(posts) {
             res.render('viewPost', posts);
         });
-        //const posts = await db.findOne(Post, , );
-        //const posts =  await Post.findOne();
     }
 }
 
