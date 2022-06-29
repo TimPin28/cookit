@@ -3,6 +3,7 @@ const router = express.Router();
 const controller = require(`../controllers/controller.js`);
 
 router.get('/', controller.getIndex);
+router.get('/alpbt', controller.getAlpbt);
 router.get('/create', controller.getCreate);
 router.get('/settings', controller.getSettings);
 router.get('/login', controller.getLogin);

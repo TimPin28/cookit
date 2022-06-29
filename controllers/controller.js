@@ -4,7 +4,13 @@ const Post = require('../database/models/Post.js');
 
 const controller = {
     getIndex: async(req, res) => {
-        const posts = await Post.find({})
+        const posts = await Post.find({}).sort({createdAt: -1}) 
+        console.log(posts);
+        res.render('index', {posts});
+    },
+
+    getAlpbt: async(req, res) => {
+        const posts = await Post.find({}).sort({title: 1}) 
         console.log(posts);
         res.render('index', {posts});
     },
