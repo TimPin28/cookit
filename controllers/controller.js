@@ -19,6 +19,14 @@ const controller = {
         res.render('profile');
     },
 
+    getLogin: function(req, res) {
+        res.render('login');
+    },
+
+    getRegister: function(req, res) {
+        res.render('register');
+    },
+
     submitPost: function(req, res) {
         const {image} = req.files
         image.mv(path.resolve(__dirname, 'public/images', image.name),(error) => {
