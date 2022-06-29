@@ -18,22 +18,24 @@
                 <p>Date</p>
                 </div>
             </div>
-            <div class="post"><a href="../PostPage/PostLomi.html">
+            {{#each posts}}
+            <div class="post"><a href="/viewPost?valid={{this.title}}">
                 <div class=food-thumbnail>
-                    <img src="images/Lomi.jpg">
+                    <img src = '../{{this.image}}'>
                 </div>
                 <div class="post-details">
                     <div class="title">
-                        <h2>Beef Pares Lomi</h2>
+                        <h2>{{this.title}}</h2>
                     </div>             
-                    <div class="tags">Beef, 1 Hour</div>
+                    <div class="tags">{{this.tags}}</div>
                     <div class="user">Bryce Salvador</div>
 
                     <div class="date">02-May-2022 10:00 PM</div>
                 </div>
             </a></div>
+            {{/each}}
 
-            <div class="post"><a href="../PostPage/PostSisig.html">
+            {{!-- <div class="post"><a href="../PostPage/PostSisig.html">
                 <div class=food-thumbnail>
                     <img src="images/Sisig.jpg">
                 </div>
@@ -91,7 +93,7 @@
 
                     <div class="date">02-May-2022 11:30 AM</div>
                 </div>
-            </a></div>
+            </a></div> --}}
 
         </div>
     </body>

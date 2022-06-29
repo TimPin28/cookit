@@ -4,8 +4,10 @@ const Post = require('../database/models/Post.js');
 const {validationResult} = require('express-validator');
 
 const controller = {
-    getIndex: function(req, res) {
-        res.render('index');
+    getIndex: async(req, res) => {
+        const posts = await Post.find({})
+        console.log(posts);
+        res.render('index', {posts});
     },
 
     getCreate: function(req, res) {
@@ -46,21 +48,24 @@ const controller = {
 
     submitPost: function(req, res) {
         const {image} = req.files
-        image.mv(path.resolve(__dirname, 'public/images', image.name),(error) => {
+        image.mv(path.resolve(__dirname, '../public/images', image.name),(error) => {
              Post.create({ 
                 ...req.body,
                 image:'/images/'+image.name
             }, (error,post) => {
                     var string = encodeURIComponent(req.body.title);
-                    res.redirect('/viewPost?valid=' + string)
+                    res.redirect('/viewPost?valid=' + string);
             }) 
         })
     },
 
     viewPost: async(req,res) => {
         var passed = req.query.valid;
-        const posts =  await Post.findOne({title:passed});
-        res.render('viewPost', posts);
+        await db.findOne(Post, {title:passed}, null, function(posts) {
+            res.render('viewPost', posts);
+        });
+        //const posts = await db.findOne(Post, , );
+        //const posts =  await Post.findOne();
     }
 }
 

@@ -3,18 +3,19 @@ const router = express.Router();
 const controller = require(`../controllers/controller.js`);
 const {registerValidation} = require('../validators.js')
 
-router.post('/register');
-
 router.get('/', controller.getIndex);
 router.get('/create', controller.getCreate);
 router.get('/settings', controller.getSettings);
 router.get('/login', controller.getLogin);
 router.get('/register', controller.getRegister);
 router.get('/profile', controller.getProfile);
-router.get('/viewPost', controller.viewPost);
 
 
 router.post('/register', registerValidation, controller.registerUser);
 router.post('/submit-post', controller.submitPost);
+
+router.get('/viewPost', controller.viewPost);
+
+
 
 module.exports = router;

@@ -13,7 +13,7 @@ const database = {
     connect: function () {
         mongoose.connect(databaseURL, options, function(error) {
             if(error) throw error;
-            console.log('Connected to: ' + url);
+            console.log('Connected to: ' + databaseURL);
         });
     },
 
