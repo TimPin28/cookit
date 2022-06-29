@@ -8,7 +8,11 @@ const fileUpload = require('express-fileupload');
 const mongoose = require('./database/models/connection');
 const Post = require('./database/models/Post');
 
+<<<<<<< Updated upstream
 //mongoose.connect();
+=======
+mongoose.connect();
+>>>>>>> Stashed changes
 
 // routes imports
 const routes = require(`./routes/routes.js`);
@@ -35,6 +39,7 @@ app.use(fileUpload());
 // serve static files
 app.use(express.static('public')); 
 
+<<<<<<< Updated upstream
 // Sessions
 app.use(session({
     store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/cookitDB' }),
@@ -82,5 +87,7 @@ app.use((req, res, next) => {
 // })
 
 
+=======
+>>>>>>> Stashed changes
 app.use(`/`, routes);
 

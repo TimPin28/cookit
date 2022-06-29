@@ -1,7 +1,11 @@
 // initialize mongodb connection
 
 const mongoose = require('mongoose');
+<<<<<<< Updated upstream
 const databaseURL = 'mongodb://localhost:27017/cookitDB'; // will replace with ATLAS or Heroku
+=======
+const url = 'mongodb://localhost:27017/cookitDB'; // will replace with ATLAS or Heroku
+>>>>>>> Stashed changes
 
 const options = {
     useNewUrlParser: true,
