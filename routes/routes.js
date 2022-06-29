@@ -2,11 +2,6 @@ const express = require(`express`);
 const router = express.Router();
 const controller = require(`../controllers/controller.js`);
 
-<<<<<<< Updated upstream
-router.post('/register');
-
-=======
->>>>>>> Stashed changes
 router.get('/', controller.getIndex);
 router.get('/create', controller.getCreate);
 router.get('/settings', controller.getSettings);

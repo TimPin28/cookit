@@ -8,11 +8,7 @@ const fileUpload = require('express-fileupload');
 const mongoose = require('./database/models/connection');
 const Post = require('./database/models/Post');
 
-<<<<<<< Updated upstream
-//mongoose.connect();
-=======
 mongoose.connect();
->>>>>>> Stashed changes
 
 // routes imports
 const routes = require(`./routes/routes.js`);
@@ -39,7 +35,6 @@ app.use(fileUpload());
 // serve static files
 app.use(express.static('public')); 
 
-<<<<<<< Updated upstream
 // Sessions
 app.use(session({
     store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/cookitDB' }),
@@ -59,35 +54,5 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.post('/submit-post', function(req, res) {
-//     const {image} = req.files
-//     image.mv(path.resolve(__dirname, 'public/images', image.name),(error) => {
-//          Post.create({ 
-//             ...req.body,
-//             image:'/images/'+image.name
-//         }, (error,post) => {
-//                 var string = encodeURIComponent(req.body.title);
-//                 res.redirect('/viewPost?valid=' + string)
-//         }) 
-//     })
-
-// });
-
-//display after submit
-// app.get('/viewPost', async(req,res) => {
-//     var passed = req.query.valid;
-//     const posts =  await Post.findOne({title:passed});
-//     res.render('viewPost', posts);
-// })
-
-//home to display
-// app.get('/viewPost2', async(req,res) => {
-//     const posts = await Post.findOne({...req.body.title})
-//     res.render('viewPost', posts)
-// })
-
-
-=======
->>>>>>> Stashed changes
 app.use(`/`, routes);
 
