@@ -1,6 +1,7 @@
 const db = require('../database/models/connection.js');
 const path = require('path');
 const Post = require('../database/models/Post.js');
+const {validationResult} = require('express-validator');
 
 const controller = {
     getIndex: function(req, res) {
@@ -28,7 +29,19 @@ const controller = {
     },
 
     registerUser: (req, res) => {
-        res.redirect('/login');
+        const errors = validationResult(req);
+
+        if(errors.isEmpty()) {
+            const {username, email, password} = req.body;
+
+            res.redirect('/login');
+        }
+        else {
+            const messages = errors.array().map((item) => item.msg);
+
+            req.flash('error_msg', messages.join(' '));
+            res.redirect('/register');
+        }
     },
 
     submitPost: function(req, res) {

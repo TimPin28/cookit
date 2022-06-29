@@ -1,6 +1,7 @@
 const express = require(`express`);
 const router = express.Router();
 const controller = require(`../controllers/controller.js`);
+const {registerValidation} = require('../validators.js')
 
 router.post('/register');
 
@@ -13,7 +14,7 @@ router.get('/profile', controller.getProfile);
 router.get('/viewPost', controller.viewPost);
 
 
-router.post('/register', controller.registerUser);
+router.post('/register', registerValidation, controller.registerUser);
 router.post('/submit-post', controller.submitPost);
 
 module.exports = router;

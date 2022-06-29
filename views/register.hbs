@@ -7,18 +7,20 @@
     </head>
 
     <body>
+
+        {{>messages}}
         <div id="register-container">
             <img id="logo" src="images/Icon.png" />
             <form id="register-form" action ="/register" method="POST">
                 <div>
                     <br>
-                    <input type="text" placeholder="Username" id ="username" size = 30>
+                    <input type="text" placeholder="Username" id ="username" name="username" size = 30>
                     <br><br>
-                    <input type="email" placeholder ="Email" id="email" size=30>
+                    <input type="email" placeholder ="Email" id="email" name="email" size=30>
                     <br><br>
-                    <input type="password" placeholder="Password" id="password" size = 30>
+                    <input type="password" placeholder="Password" id="password" name="password" size = 30>
                     <br><br>
-                    <input type="password" placeholder="Confirm Password" id = "confirmPassword" size = 30>
+                    <input type="password" placeholder="Confirm Password" id="confirm-password" name="confirm-password" size = 30>
 
                     <br><br>
 
