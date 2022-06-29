@@ -5,6 +5,7 @@ const {registerValidation, loginValidation} = require('../validators.js');
 const {isPublic, isPrivate} = require('../middlewares/checkAuth.js');
 
 router.get('/', controller.getIndex);
+router.get('/alpbt', controller.getAlpbt);
 router.get('/create', controller.getCreate);
 router.get('/settings', controller.getSettings);
 router.get('/login', isPublic, controller.getLogin);

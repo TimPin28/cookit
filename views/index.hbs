@@ -13,11 +13,11 @@
             <div class="dropdown">
                 <button class="dropbtn">Sort</button>
                 <div class="dropdown-content">
-                <p>Alphabetical</p>
-                <p>Rating</p>
-                <p>Date</p>
+                <a href="/alpbt"><p>Alphabetical</p></a>
+                <a href="/"><p href="/">Date</p></a>
                 </div>
             </div>
+
             {{#each posts}}
             <div class="post"><a href="/viewPost?valid={{this.title}}">
                 <div class=food-thumbnail>
@@ -30,70 +30,10 @@
                     <div class="tags">{{this.tags}}</div>
                     <div class="user">Bryce Salvador</div>
 
-                    <div class="date">02-May-2022 10:00 PM</div>
+                    <div class="date">{{this.createdAt}}</div>
                 </div>
             </a></div>
             {{/each}}
-
-            {{!-- <div class="post"><a href="../PostPage/PostSisig.html">
-                <div class=food-thumbnail>
-                    <img src="images/Sisig.jpg">
-                </div>
-                <div class="post-details">
-                    <div class="title">
-                        <h2>Salmon Sisig</h2>   
-                    </div>             
-                    <div class="tags">Fish, 25 Minutes</div>
-                    <div class="user">Andres Dalisay</div>
-
-                    <div class="date">02-May-2022 07:30 PM</div>
-                </div>
-            </a></div>
-
-            <div class="post"><a href="../PostPage/PostFlan.html">
-                <div class=food-thumbnail>
-                    <img src="images/LecheFlan.jpg">
-                </div>
-                <div class="post-details">
-                    <div class="title">
-                        <h2>Leche Flan</h2>  
-                    </div>             
-                    <div class="tags">55 mins, sweet, dessert</div>
-                    <div class="user">Antoinne Salvador</div>
-
-                    <div class="date">02-May-2022 04:30 PM</div>
-                </div>
-            </a></div>
-
-            <div class="post"><a href="../PostPage/PostChicken.html">
-                <div class=food-thumbnail>
-                    <img src="images/Chicken.jpg">
-                </div>
-                <div class="post-details">
-                    <div class="title">
-                        <h2>Crispy Fried Chicken</h2>  
-                    </div>             
-                    <div class="tags">chicken, fried, 35 mins</div>
-                    <div class="user">Timothy Pinawin</div>
-
-                    <div class="date">02-May-2022 01:30 PM</div>
-                </div>
-            </a></div>
-
-            <div class="post"><a href="../PostPage/PostBagnet.html">
-                <div class=food-thumbnail>
-                    <img src="images/Bagnet.jpg">
-                </div>
-                <div class="post-details">
-                    <div class="title">
-                        <h2>Crispy Bagnet</h2> 
-                    </div>             
-                    <div class="tags">pork, fried, 1 hour</div>
-                    <div class="user">Vincent Pinawin</div>
-
-                    <div class="date">02-May-2022 11:30 AM</div>
-                </div>
-            </a></div> --}}
 
         </div>
     </body>
