@@ -8,6 +8,8 @@ const fileUpload = require('express-fileupload');
 const mongoose = require('./database/models/connection');
 const Post = require('./database/models/Post');
 
+//mongoose.connect();
+
 // routes imports
 const routes = require(`./routes/routes.js`);
 
@@ -33,6 +35,24 @@ app.use(fileUpload());
 // serve static files
 app.use(express.static('public')); 
 
+// Sessions
+app.use(session({
+    store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/cookitDB' }),
+    secret: 'randomsecret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 * 7 }
+}));
+
+// Flash
+app.use(flash());
+
+// Global messages vars
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    next();
+});
 
 // app.post('/submit-post', function(req, res) {
 //     const {image} = req.files

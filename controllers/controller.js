@@ -27,6 +27,10 @@ const controller = {
         res.render('register');
     },
 
+    registerUser: (req, res) => {
+        res.redirect('/login');
+    },
+
     submitPost: function(req, res) {
         const {image} = req.files
         image.mv(path.resolve(__dirname, 'public/images', image.name),(error) => {
