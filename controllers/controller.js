@@ -1,6 +1,8 @@
 const db = require('../database/models/connection.js');
 const path = require('path');
 const Post = require('../database/models/Post.js');
+const User = require('../database/models/User.js');
+const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
 
 const controller = {
@@ -36,13 +38,102 @@ const controller = {
         if(errors.isEmpty()) {
             const {username, email, password} = req.body;
 
-            res.redirect('/login');
+            User.getOne({email: email}, (err, result) => {
+                if (result) {
+                    console.log(result);
+                    req.flash('error_msg', 'User already exists. Please login.');
+                    res.redirect('/login');
+                }
+                else {
+                    const saltRounds = 10;
+
+                    bcrypt.hash(password, saltRounds, (err, hashed) => {
+                        const newUser = {
+                            username,
+                            email,
+                            password: hashed
+                        };
+
+                        User.create(newUser, (err, user) => {
+                            if (err) {
+                                req.flash('error_msg', 'Could not create user. Please try again.');
+                                res.redirect('/register');
+                            }
+                            else {
+                                req.flash('success_msg', 'You are now registered! Login below.');
+                                res.redirect('/login');
+                            }
+                        })
+                    })
+                }
+            });
         }
         else {
             const messages = errors.array().map((item) => item.msg);
 
             req.flash('error_msg', messages.join(' '));
             res.redirect('/register');
+        }
+    },
+
+    loginUser: (req, res) => {
+        const errors = validationResult(req);
+
+        if (errors.isEmpty()) {
+        const {
+            username,
+            password
+        } = req.body;
+
+        User.getOne({ username: username }, (err, user) => {
+            if (err) {
+              // Database error occurred...
+              req.flash('error_msg', 'Something happened! Please try again.');
+              res.redirect('/login');
+            } else {
+              // Successful query
+              if (user) {
+                // User found!
+                // Check password with hashed value in the database
+                bcrypt.compare(password, user.password, (err, result) => {
+                    // passwords match (result == true)
+                    if (result) {
+                        // Update session object once matched!
+                        req.session.user = user._id;
+                        req.session.name = user.name;
+                    
+                        console.log(req.session);
+                    
+                        res.redirect('/');
+                    } 
+                    else {
+                        // passwords don't match
+                        req.flash('error_msg', 'Incorrect password. Please try again.');
+                        res.redirect('/login');
+                    }
+                });
+              } else {
+                // No user found
+                req.flash('error_msg', 'No registered user with that email. Please register.');
+                res.redirect('/register');
+              }
+            }
+          });
+        }
+        else {
+            const messages = errors.array().map((item) => item.msg);
+
+            req.flash('error_msg', messages.join(' '));
+            res.redirect('/login');
+        }
+    },
+
+    logoutUser: (req, res) => {
+        if (req.session) {
+            req.session.destroy(() => {
+                res.clearCookie('connect.sid');
+                res.redirect('/');
+            });
         }
     },
 

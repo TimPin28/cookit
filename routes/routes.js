@@ -1,18 +1,22 @@
 const express = require(`express`);
 const router = express.Router();
 const controller = require(`../controllers/controller.js`);
-const {registerValidation} = require('../validators.js')
+const {registerValidation, loginValidation} = require('../validators.js');
+const {isPublic, isPrivate} = require('../middlewares/checkAuth.js');
 
 router.get('/', controller.getIndex);
 router.get('/create', controller.getCreate);
 router.get('/settings', controller.getSettings);
-router.get('/login', controller.getLogin);
-router.get('/register', controller.getRegister);
+router.get('/login', isPublic, controller.getLogin);
+router.get('/register', isPublic, controller.getRegister);
 router.get('/profile', controller.getProfile);
 
 
-router.post('/register', registerValidation, controller.registerUser);
+router.post('/register', isPublic, registerValidation, controller.registerUser);
+router.post('/login', isPublic, loginValidation, controller.loginUser);
 router.post('/submit-post', controller.submitPost);
+
+router.get('/logout', isPrivate, controller.logoutUser);
 
 router.get('/viewPost', controller.viewPost);
 

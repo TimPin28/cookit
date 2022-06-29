@@ -7,16 +7,17 @@
     </head>
 
     <body>
-        <img src="images/Icon.png" />
+        {{>messages}}
+        <a href="/"><img id="logo" src="images/Icon.png" /></a>
         <!-- <form action = "http://www.google.com" onSubmit = "return checkForm()"> -->
-        <form action = "home_page.html">
+         <form id="login-form" action ="/login" method="POST">
             <div>
                 <br>
-                <input type = "text"  placeholder = "Username" id = "username" size = 30>
+                <input type ="text" placeholder="Username" id="username" name="username" size = 30>
                 <br><br>
-                <input type = "password" placeholder = "Password" id = "password" size = 30>
+                <input type="password" placeholder="Password" id="password" name="password" size = 30>
                 <br><br>
-                <input type = 'submit' id="button" value = "Log in">
+                <input type="submit" id="button" value="Log in">
             </div>
         </form>
     </body>
