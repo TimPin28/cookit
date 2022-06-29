@@ -1,7 +1,7 @@
 // initialize mongodb connection
 
 const mongoose = require('mongoose');
-const databaseURL = 'mongodb://localhost:27107/cookitdb';
+const databaseURL = 'mongodb://localhost:27107/cookitdb'; // will replace with ATLAS or Heroku
 
 const options = {
     useNewUrlParser: true,
