@@ -11,7 +11,7 @@ const Post = require('./database/models/Post');
 mongoose.connect();
 
 // routes imports
-const routes = require(`./routes/routes.js`);
+const routes = require('./routes/routes.js');
 
 // create express application
 const app = new express();
@@ -26,7 +26,7 @@ app.listen(port, function() {
 var hbs = require('hbs');
 const async = require('hbs/lib/async');
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + `/views/partials`);
+hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(express.json()); 
 app.use(express.urlencoded({extended: true})); 
