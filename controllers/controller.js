@@ -4,6 +4,7 @@ const Post = require('../database/models/Post.js');
 const User = require('../database/models/User.js');
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
+const async = require('hbs/lib/async');
 
 const controller = {
     getIndex: async(req, res) => {
@@ -196,6 +197,11 @@ const controller = {
                 res.render('viewPost', post);
             }
         });
+    },
+
+    viewProfile: async(req, res) => {
+        console.log('test');
+        res.render('/profile');
     }
 }
 
