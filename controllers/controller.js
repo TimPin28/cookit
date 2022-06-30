@@ -7,25 +7,52 @@ const {validationResult} = require('express-validator');
 
 const controller = {
     getIndex: async(req, res) => {
-        const posts = await Post.find({}).sort({createdAt: -1})
-        res.render('index', {posts});
+        const posts = await Post.find({}).sort({createdAt: -1});
+
+        if(req.session.username){
+            res.render('index', {posts, loggedin: true, loggeduser: req.session.username});
+        }
+        else{
+            res.render('index', {posts});
+        }
+        
     },
 
     getAlpbt: async(req, res) => {
         const posts = await Post.find({}).sort({title: 1}) 
-        res.render('index', {posts});
+        if(req.session.username){
+            res.render('index', {posts, loggedin: true, loggeduser: req.session.username});
+        }
+        else{
+            res.render('index', {posts});
+        }
     },
 
     getCreate: function(req, res) {
-        res.render('create');
+        if(req.session.username){
+            res.render('create', {loggedin: true, loggeduser: req.session.username});
+        }
+        else{
+            res.render('create');
+        }
     },
 
     getSettings: function(req, res) {
-        res.render('settings');
+        if(req.session.username){
+            res.render('settings', {loggedin: true, loggeduser: req.session.username});
+        }
+        else{
+            res.render('settings');
+        }
     },
 
     getProfile: function(req, res) {
-        res.render('profile');
+        if(req.session.username){
+            res.render('profile', {loggedin: true, loggeduser: req.session.username});
+        }
+        else{
+            res.render('profile');
+        }
     },
 
     getLogin: function(req, res) {
@@ -158,8 +185,16 @@ const controller = {
 
     viewPost: async(req,res) => {
         var passed = req.query.valid;
-        await db.findOne(Post, {title:passed}, null, function(posts) {
-            res.render('viewPost', posts);
+        await db.findOne(Post, {title:passed}, null, function(post) {
+            if(req.session.username) {
+                res.render('viewPost', {title: post.title,
+                    tags: post.tags, author: post.author, createdAt: post.createdAt,
+                    ingredients: post.ingredients, instructions: post.instructions, 
+                    image: post.image, loggedin: true, loggeduser: req.session.username});
+            }
+            else {
+                res.render('viewPost', post);
+            }
         });
     }
 }

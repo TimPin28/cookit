@@ -15,9 +15,13 @@
     </div>
 
     <div class="side-nav">
+        {{#if loggedin}}
+        <a href="/profile"><div class="side-nav-button">{{loggeduser}}</div></a>
+        <a href="/logout"><div class="side-nav-button">Logout</div></a>
+        {{else}}
         <a href="/login"><div class="side-nav-button">Login</div></a>
         <a href="/register"><div class="side-nav-button">Register</div></a>
-        <a href="/profile"><div class="side-nav-button">Profile</div></a>
-        <a href="/logout"><div class="side-nav-button">Logout</div></a>
+        {{/if}}
+
     </div>
 </div>
