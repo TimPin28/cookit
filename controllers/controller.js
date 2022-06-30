@@ -176,7 +176,7 @@ const controller = {
         image.mv(path.resolve(__dirname, '../public/images', image.name),(error) => {
              Post.create({ 
                 author: req.session.username,
-                ...req.body,
+                ...req.body,comments: null,
                 image:'/images/'+image.name
             }, (error,post) => {
                     var string = encodeURIComponent(post._id.toString());
@@ -192,7 +192,7 @@ const controller = {
 
         Comment.create({ogPost: ID, comment_text: body}, (error) => {
             res.redirect('back');
-            res.render('index', {posts});
+            //res.render('index', {posts});
         })
     },
 
@@ -201,7 +201,7 @@ const controller = {
         res.render('index', {posts});
     },
 
-    viewComment: async(req,res) => {
+    viewComments: async(req,res) => {
         console.log("here");
         var ID = req.get('referer');
         ID = ID.replace("http://localhost:3000/viewPost?valid=", "");
@@ -210,18 +210,44 @@ const controller = {
         });
     },
 
+    // viewPost: async(req,res) => {
+    //     var passed = req.query.valid;
+    //     await db.findOne(Post, {_id:passed}, null, function(post) {
+    //         if(req.session.username) {
+    //             res.render('viewPost', {title: post.title,
+    //                 tags: post.tags, author: post.author, createdAt: post.createdAt,
+    //                 ingredients: post.ingredients, instructions: post.instructions, 
+    //                 image: post.image, loggedin: true, loggeduser: req.session.username});
+    //         }
+    //         else {
+    //             res.render('viewPost', post);
+    //         }
+    //     });
+    // },
+
     viewPost: async(req,res) => {
         var passed = req.query.valid;
-        await db.findOne(Post, {_id:passed}, null, function(post) {
-            if(req.session.username) {
-                res.render('viewPost', {title: post.title,
-                    tags: post.tags, author: post.author, createdAt: post.createdAt,
-                    ingredients: post.ingredients, instructions: post.instructions, 
-                    image: post.image, loggedin: true, loggeduser: req.session.username});
-            }
-            else {
-                res.render('viewPost', post);
-            }
+        await db.findOne(Post, {_id:passed}, null, async function(post) {
+            await db.findMany(Comment, {ogPost:passed}, null, function(comments) {
+                post.comments=comments;
+                if(req.session.username) {
+                    console.log(post);
+                    console.log(comments);
+                    res.render('viewPost', {title: post.title,
+                        tags: post.tags, author: post.author, createdAt: post.createdAt,
+                        ingredients: post.ingredients, instructions: post.instructions, 
+                        image: post.image, loggedin: true, loggeduser: req.session.username, 
+                        comments: post.comments});
+                }
+                else {
+                    res.render('viewPost', {title: post.title,
+                        tags: post.tags, author: post.author, createdAt: post.createdAt,
+                        ingredients: post.ingredients, instructions: post.instructions, 
+                        image: post.image, loggedin: true, loggeduser: req.session.username, 
+                        comments: post.comments});
+                }
+            });
+            
         });
     },
 

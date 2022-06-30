@@ -7,6 +7,7 @@ const PostSchema = new mongoose.Schema({
     ingredients: String,
     instructions: String,
     image: String,
+    comments: Object,
 }, {timestamps: true});
 
 const Post = mongoose.model('Post', PostSchema);

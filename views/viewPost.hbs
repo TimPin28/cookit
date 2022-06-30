@@ -10,7 +10,21 @@
         
         {{> header}}
 
-        {{> post_content title=title tags=tags author=author ingredients=ingredients instructions=instructions image=image comments=comments}}
+        {{> post_content title=title tags=tags author=author ingredients=ingredients instructions=instructions image=image}}
+        
+        <div id="bottom">
+
+          <div>
+                {{#each comments}} 
+                    
+                    {{> comments}} 
+                
+                {{/each}}
+            
+          </div>
+                
+
+        </div>
         
     </body>
 </html> 

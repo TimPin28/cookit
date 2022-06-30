@@ -24,7 +24,7 @@ router.post('/search-post', controller.searchPost);
 router.get('/logout', isPrivate, controller.logoutUser);
 
 router.get('/viewPost', controller.viewPost);
-router.get('/viewComments', controller.viewComment);
+router.get('/viewComments', controller.viewComments);
 
 
 module.exports = router;
