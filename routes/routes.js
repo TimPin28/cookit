@@ -16,11 +16,13 @@ router.get('/profile', controller.getProfile);
 router.post('/register', isPublic, registerValidation, controller.registerUser);
 router.post('/login', isPublic, loginValidation, controller.loginUser);
 router.post('/submit-post', controller.submitPost);
+router.post('/comment-post', controller.commentPost);
+router.post('/search-post', controller.searchPost);
 
 router.get('/logout', isPrivate, controller.logoutUser);
 
 router.get('/viewPost', controller.viewPost);
-
+router.get('/viewComments', controller.viewComment);
 
 
 module.exports = router;

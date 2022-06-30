@@ -3,40 +3,44 @@ function checkForm() {
 		var tags = document.getElementById("tags").value;
 		var ingredients = document.getElementById("ingredients").value;	
         var instructions = document.getElementById("instructions").value;
+		var image = document.getElementById("image").value;
 
 		var valid = false;		
 		var all_fields = true;
-		if (title == "")
-		{
+		if (title == "") {
 			all_fields = false;
 			document.getElementById("title").style.backgroundColor = "#CD5C5C";
 		}
 		else
 			document.getElementById("title").style.backgroundColor = "white";
 
-		if (tags == "")
-		{
+		if (tags == "") {
 			all_fields = false;
 			document.getElementById("tags").style.backgroundColor = "#CD5C5C";
 		}
 		else
 			document.getElementById("tags").style.backgroundColor = "white";
 
-		if (ingredients == "")
-		{
+		if (ingredients == "") {
 			all_fields = false;
 			document.getElementById("ingredients").style.backgroundColor = "#CD5C5C";
 		}
 		else
 			document.getElementById("ingredients").style.backgroundColor = "white";
 
-        if (instructions == "")
-		{
+        if (instructions == "") {
 			all_fields = false;
 			document.getElementById("instructions").style.backgroundColor = "#CD5C5C";
 		}
 		else
 			document.getElementById("instructions").style.backgroundColor = "white";
+		
+		if (image == "") {
+			all_fields = false;
+			document.getElementById("image").style.backgroundColor = "#CD5C5C";
+		}
+		else
+			document.getElementById("image").style.backgroundColor = "white";
 		
 		if (all_fields == true)
 		{
