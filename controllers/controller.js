@@ -185,6 +185,11 @@ const controller = {
         })
     },
 
+    searchPost: async(req, res) => {
+        const posts = await Post.find({'title': {'$regex': req.body.searchPost, '$options': 'i'} })
+        res.render('index', {posts});
+    },
+
     commentPost: function(req, res) {
         var ID = req.get('referer');
         var body = req.body.comment_text;
@@ -194,11 +199,6 @@ const controller = {
             res.redirect('back');
             //res.render('index', {posts});
         })
-    },
-
-    searchPost: async(req, res) => {
-        const posts = await Post.find({'title': {'$regex': req.body.searchPost, '$options': 'i'} })
-        res.render('index', {posts});
     },
 
     viewComments: async(req,res) => {
