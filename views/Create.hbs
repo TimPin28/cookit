@@ -23,24 +23,24 @@
                         <input name = "tags" type = "text" placeholder = "Tags" id = "tags" size = 20>
                         <br><br>
                         <textarea name = "ingredients" form="createForm" placeholder = "Ingredients" id="ingredients" rows="10" cols="100"></textarea>
-                        {{!-- <div id = "ingredientsarea">
-                            <p id = "ingredients">Ingredients</p>
+                        {{!-- <div id = "ingredients">
+                            <p id = "ingredientsarea" form="createForm">Ingredients</p>
                         </div>
                         <script>
                             BalloonEditor
-                                .create( document.querySelector( '#ingredientsarea' ) )
+                                .create( document.querySelector( '#ingredients' ) )
                                 .catch( error => {
                                     console.error( error );
                                 } );
                         </script> --}}
                         <br><br>
                         <textarea name = "instructions" form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea>
-                        {{!-- <div id = "instructionsarea">
-                            <p id = "instructions">Instructions</p>
+                        {{!-- <div id = "instructions">
+                            <p id = "instructionsarea" form="createForm">Instructions</p>
                         </div>
                         <script>
                             BalloonEditor
-                                .create( document.querySelector( '#instructionsarea' ) )
+                                .create( document.querySelector( '#instructions' ) )
                                 .catch( error => {
                                     console.error( error );
                                 } );

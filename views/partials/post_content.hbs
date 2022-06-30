@@ -1,6 +1,6 @@
 <div id="content">
     <div id="left">
-        <h1>{{title}}
+        <h1>{{title}}</h1>
 
         <h3 class="tags">{{tags}}</h3>
         <a href="../ProfilePage/ProfileVince.html"><h3>{{author}}</h3></a>
@@ -27,7 +27,7 @@
         </div>
 </div>
 
-<form action = "" onSubmit = "" id="createcomment">
+<form action = "/comment-post" method="post" onSubmit = "" id="createcomment">
     <div>
         <textarea form="createcomment" name="comment_text" placeholder = "Create Comment" id="comment" rows="8" cols="75"></textarea>
         <br><br>

@@ -2,9 +2,10 @@ const db = require('../database/models/connection.js');
 const path = require('path');
 const Post = require('../database/models/Post.js');
 const User = require('../database/models/User.js');
+const Comment = require('../database/models/Comments.js');
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
-const async = require('hbs/lib/async');
+
 
 const controller = {
     getIndex: async(req, res) => {
@@ -20,7 +21,7 @@ const controller = {
     },
 
     getAlpbt: async(req, res) => {
-        const posts = await Post.find({}).sort({title: 1}) 
+        const posts = await Post.find({}).collation({'locale':'en'}).sort({title: 1})
         if(req.session.username){
             res.render('index', {posts, loggedin: true, loggeduser: req.session.username});
         }
@@ -178,15 +179,40 @@ const controller = {
                 ...req.body,
                 image:'/images/'+image.name
             }, (error,post) => {
-                    var string = encodeURIComponent(req.body.title);
+                    var string = encodeURIComponent(post._id.toString());
                     res.redirect('/viewPost?valid=' + string);
-            }) 
+            })
         })
+    },
+
+    commentPost: function(req, res) {
+        var ID = req.get('referer');
+        var body = req.body.comment_text;
+        ID = ID.replace("http://localhost:3000/viewPost?valid=", "");
+
+        Comment.create({ogPost: ID, comment_text: body}, (error) => {
+            res.redirect('back');
+            res.render('index', {posts});
+        })
+    },
+
+    searchPost: async(req, res) => {
+        const posts = await Post.find({'title': {'$regex': req.body.searchPost, '$options': 'i'} })
+        res.render('index', {posts});
+    },
+
+    viewComment: async(req,res) => {
+        console.log("here");
+        var ID = req.get('referer');
+        ID = ID.replace("http://localhost:3000/viewPost?valid=", "");
+        await db.findMany(Comment, {_id:ID}, null, function(comments) {
+            res.render('viewPost', comments);
+        });
     },
 
     viewPost: async(req,res) => {
         var passed = req.query.valid;
-        await db.findOne(Post, {title:passed}, null, function(post) {
+        await db.findOne(Post, {_id:passed}, null, function(post) {
             if(req.session.username) {
                 res.render('viewPost', {title: post.title,
                     tags: post.tags, author: post.author, createdAt: post.createdAt,
