@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
-    // _id: String,
+    author: String,
     title: String,
     tags: String,
     ingredients: String,

@@ -103,10 +103,11 @@ const controller = {
                     // passwords match (result == true)
                     if (result) {
                         // Update session object once matched!
-                        req.session.user = user._id;
-                        req.session.name = user.name;
+                        req.session.userid = user._id;
+                        req.session.username = user.username;
                     
                         console.log(req.session);
+                        console.log(req.session.username);
                     
                         res.redirect('/');
                     } 
@@ -145,6 +146,7 @@ const controller = {
         const {image} = req.files
         image.mv(path.resolve(__dirname, '../public/images', image.name),(error) => {
              Post.create({ 
+                author: req.session.username,
                 ...req.body,
                 image:'/images/'+image.name
             }, (error,post) => {
