@@ -146,7 +146,6 @@ const controller = {
         image.mv(path.resolve(__dirname, '../public/images', image.name),(error) => {
              Post.create({ 
                 ...req.body,
-                image:'/images/'+image.name
             }, (error,post) => {
                     var string = encodeURIComponent(req.body.title);
                     res.redirect('/viewPost?valid=' + string);
