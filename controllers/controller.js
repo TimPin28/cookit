@@ -234,7 +234,6 @@ const controller = {
 
     getProfile: async(req, res) => {
         const username = req.params.username;
-        console.log(req.params.username);
         User.getOne({username:username}, (err, user) => {
             if(req.session.username) {
                 res.render('profile', {username: username, joindate: user.date,
@@ -243,9 +242,7 @@ const controller = {
             else {
                 res.render('profile', {username: username, joindate: user.date});
             }
-            
         });
-  
     }
 }
 
