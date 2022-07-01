@@ -135,9 +135,6 @@ const controller = {
                         req.session.userid = user._id;
                         req.session.username = user.username;
                     
-                        console.log(req.session);
-                        console.log(req.session.username);
-                    
                         res.redirect('/');
                     } 
                     else {
@@ -203,28 +200,12 @@ const controller = {
     },
 
     viewComments: async(req,res) => {
-        console.log("here");
         var ID = req.get('referer');
         ID = ID.replace("http://localhost:3000/viewPost?valid=", "");
         await db.findMany(Comment, {_id:ID}, null, function(comments) {
             res.render('viewPost', comments);
         });
     },
-
-    // viewPost: async(req,res) => {
-    //     var passed = req.query.valid;
-    //     await db.findOne(Post, {_id:passed}, null, function(post) {
-    //         if(req.session.username) {
-    //             res.render('viewPost', {title: post.title,
-    //                 tags: post.tags, author: post.author, createdAt: post.createdAt,
-    //                 ingredients: post.ingredients, instructions: post.instructions, 
-    //                 image: post.image, loggedin: true, loggeduser: req.session.username});
-    //         }
-    //         else {
-    //             res.render('viewPost', post);
-    //         }
-    //     });
-    // },
 
     viewPost: async(req,res) => {
         var passed = req.query.valid;
