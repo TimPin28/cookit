@@ -85,6 +85,7 @@ const controller = {
                             username,
                             email,
                             password: hashed
+
                         };
 
                         User.create(newUser, (err, user) => {
@@ -168,18 +169,40 @@ const controller = {
         }
     },
 
-    submitPost: function(req, res) {
-        const {image} = req.files
-        image.mv(path.resolve(__dirname, '../public/images', image.name),(error) => {
-             Post.create({ 
-                author: req.session.username,
-                ...req.body,comments: null,
-                image:'/images/'+image.name
-            }, (error,post) => {
-                    var string = encodeURIComponent(post._id.toString());
-                    res.redirect('/viewPost?valid=' + string);
+    submitPost: function(req, res) { //postid-username
+        const {image} = req.files;
+        console.log(image);
+
+        const post = Post.create({
+            author: req.session.username,
+            ...req.body,
+            image: null,
+            comments: null
+        }, (error,post) => {
+            console.log(image.name);
+            image.name = post._id.toString() + '-' + post.author;
+            post.image = '/images/' + image.name;
+            
+            image.mv(path.resolve(__dirname, '../public/images', image.name), (error, post) => {
+                if(error) console.log(error);
             })
-        })
+            var string = encodeURIComponent(post._id.toString());
+                res.redirect('/viewPost?valid=' + string);
+        });
+
+
+        // image.mv(path.resolve(__dirname, '../public/images', image.name),(error) => {
+        //      Post.create({ 
+        //         author: req.session.username,
+        //         ...req.body,comments: null,
+        //         image:'/images/'+ req.body._id + '-' + req.session.username
+        //     }, 
+        //     (error,post) => {
+        //             post.image = '/images/'+ req.body._id + '-' + req.session.username;
+        //             var string = encodeURIComponent(post._id.toString());
+        //             res.redirect('/viewPost?valid=' + string);
+        //     })
+        // })
     },
 
     searchPost: async(req, res) => {
@@ -260,6 +283,15 @@ const controller = {
                     pfp: user.pfp});
             }
         });
+    },
+
+    Deleteuser: async(req, res) => {
+        const username = req.session.username;
+        
+    },
+
+    changepfp: async(req,res) =>{
+
     }
 }
 

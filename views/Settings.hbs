@@ -21,17 +21,21 @@
 
         <div id="change-password">
             <h2>Change Password</h2>
-            <form id="change-password-form" action="">
-                
+            <form id="change-password-form" action="/changepass" method="POST">
+                <input type="password">
             </form>
         </div>
 
         <br><br>
 
-        <h2>Change Profile Picture</h2>
-        <br><br><br>
+        <div id="change-profile-picture">
+            <h2>Change Profile Picture</h2>
+            <form id="change-profile-picture-form" action="/changepfp" method="POST">
+                <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg"/>
+            </form>
+        </div>
 
-        <form action = "LandingPage.html" id="createForm">
+        <form action = "" id="createForm">
             <input type = submit id="button" value = "Delete Account">
         </form>
 
