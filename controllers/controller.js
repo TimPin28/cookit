@@ -237,6 +237,23 @@ const controller = {
         })
     },
 
+    editComment: async(req, res) => {
+        var postID = req.params._id;
+        var ref = req.get('referer');
+        ref = ref.replace("http://localhost:3000/viewPost?valid=", "");
+        console.log(postID);
+
+        Comment.updateOne({_id: new Object(postID)}, {
+            author: req.session.username,
+            ogPost: ref,
+            comment_text: req.body.comment_text
+        }, (error) =>{
+            console.log(req.body.comment_text);
+            res.redirect('back');
+        })
+
+    },
+
     viewPost: async(req,res) => {
         var passed = req.query.valid;
         await db.findOne(Post, {_id:passed}, null, async function(post) {
@@ -272,29 +289,39 @@ const controller = {
 
     editPost: async(req, res) => {
         const username = req.session.username;
-        const image = req.files.image;
-        const uploadPath = path.join(__dirname, '..', 'public', 'images', 'posts');
+        var postID = req.get('referer');
+        postID = postID.replace("http://localhost:3000/edit-post-form/", "");
+        if (req.files !== null){    
+            const image = req.files.image;
+            const uploadPath = path.join(__dirname, '..', 'public', 'images', 'posts');
 
-        let imgtype;
-        if(image.mimetype === 'image/png') { imgtype = '.png' }
-        else if (image.mimetype === 'image/jpeg') { imgtype = '.jpg' }
+            let imgtype;
+            if(image.mimetype === 'image/png') { imgtype = '.png' }
+            else if (image.mimetype === 'image/jpeg') { imgtype = '.jpg' }
 
-        image.mv(path.join(__dirname, '..', 'public', 'images', 'posts', image.name), (err) => {
-            var postID = req.get('referer');
-            postID = postID.replace("http://localhost:3000/edit-post-form/", "");
-
-            const newfilename = postID + '-' + username + imgtype;
-            fs.rename(uploadPath + '\\' + image.name, uploadPath + '\\' +  newfilename, (error) => {
-                if(error) throw error;
-                else {
-                    db.updateOne(Post, {_id: new Object(postID)}, {
-                        author: req.session.username, ...req.body,image: '/images/posts/' + newfilename, comments: null,
-                        }, (error) => {
-                        res.redirect('/viewPost?valid=' + postID);
-                    });
-                }
+            image.mv(path.join(__dirname, '..', 'public', 'images', 'posts', image.name), (err) => {
+                const newfilename = postID + '-' + username + imgtype;
+                fs.rename(uploadPath + '\\' + image.name, uploadPath + '\\' +  newfilename, (error) => {
+                    if(error) throw error;
+                    else {
+                        db.updateOne(Post, {_id: new Object(postID)}, {
+                            author: req.session.username, ...req.body,image: '/images/posts/' + newfilename, comments: null,
+                            }, (error) => {
+                            res.redirect('/viewPost?valid=' + postID);
+                        });
+                    }
+                });
             });
-        });
+        }
+        else {
+            const post = Post.findOne({_id: new Object(postID)})
+            db.updateOne(Post, {_id: new Object(postID)}, {
+                author: req.session.username, ...req.body,image: post.image, comments: null,
+                }, (error) => {
+                res.redirect('/viewPost?valid=' + postID);
+            });
+        }
+        
     },
 
     editPostForm: async(req,res) => {

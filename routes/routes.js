@@ -16,6 +16,7 @@ router.get('/profile/:username', controller.getProfile);
 router.get('/profile/:username/alpbt', controller.getProfilealpbt);
 router.get('/delete-comment/:_id', controller.deleteComment);
 router.get('/edit-post-form/:_id', controller.editPostForm);
+router.post('/edit-comment/:_id', controller.editComment);
 
 
 router.post('/register', isPublic, registerValidation, controller.registerUser);
