@@ -260,6 +260,26 @@ const controller = {
         });
     },
 
+    editPost: async(req, res) => {
+        const name = req.session.username;
+        var postID = req.get('referer');
+        postID = postID.replace("http://localhost:3000/viewPost?valid=", "");
+    
+        await db.updateOne(Post, {_id: new Object(postID)}, {
+            author: req.session.username, ...req.body,comments: null,
+            }, (error) => {
+            res.redirect('referer');
+        });
+    },
+
+    editPostForm: async(req,res) => {
+        var postID = req.get('referer');
+        postID = postID.replace("http://localhost:3000/viewPost?valid=", "");
+        await db.findOne(Post,{_id: new Object(postID)}, (error,post) => {
+            res.render('createedit', post);
+        });
+    },
+
     getProfile: async(req, res) => {
         const username = req.params.username;
         const posts = await Post.find({author: username}).sort({createdAt: -1});
@@ -302,8 +322,30 @@ const controller = {
         });
     },
 
-    changepass: async (req,res) => {
+    changepass: async (req, res) => {
+        const errors = validationResult(req);
 
+        if(errors.isEmpty()) {
+            const oldpass = req.body.oldpass;
+            const newpass = req.body.newpass;
+            const cnewpass = req.body.cnewpass;
+
+            const saltRounds = 10;
+
+            bcrypt.hash(newpass, saltRounds, (err, hashed) => {
+                User.getOne({username: req.session.username}, (err, user) => {
+                    user.update({password}, hashed, (err, user) => {
+                        if(err) throw err;
+                    });
+                });
+            });
+        }
+        else {
+            const messages = errors.array().map((item) => item.msg);
+            req.flash('error_msg', messages.join(' '));
+            res.redirect('/settings');
+        }
+        
     },
     
     changepfp: async(req,res) =>{
