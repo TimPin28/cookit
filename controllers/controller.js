@@ -193,9 +193,10 @@ const controller = {
     commentPost: function(req, res) {
         var ID = req.get('referer');
         var body = req.body.comment_text;
+        var username = req.session.username;
         ID = ID.replace("http://localhost:3000/viewPost?valid=", "");
 
-        Comment.create({ogPost: ID, comment_text: body}, (error) => {
+        Comment.create({author: username, ogPost: ID, comment_text: body}, (error) => {
             res.redirect('back');
             //res.render('index', {posts});
         })
@@ -243,8 +244,7 @@ const controller = {
                     res.render('viewPost', {title: post.title,
                         tags: post.tags, author: post.author, createdAt: post.createdAt,
                         ingredients: post.ingredients, instructions: post.instructions, 
-                        image: post.image, loggedin: true, loggeduser: req.session.username, 
-                        comments: post.comments});
+                        image: post.image, comments: post.comments});
                 }
             });
             
