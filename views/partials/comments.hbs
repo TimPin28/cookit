@@ -1,10 +1,11 @@
 <li class="commentbox">
     <a href="/profile/{{author}}"><h2 class="commenter">{{author}}<span class="datetime">{{createdAt}}</span></h2></a>
     <p class="comment">{{comment_text}}</p>
-    {{!-- Add css for both! --}}
+
+    {{#if editable}}
     <a href="/delete-comment/{{_id}}">delete</a>
-    
     <button id="show">Edit</button>
+    {{/if}}
 
     <div class="center hideform">
         <button id="close" style="float: right;">X</button> 
