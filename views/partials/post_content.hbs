@@ -3,8 +3,10 @@
         <h1>{{title}}</h1>
 
         {{!-- Add css for both! --}}
+        {{#if isauthor}}
         <a href="/delete-post"><h2>delete</h2></a>
         <a href="/edit-post-form/{{_id}}"><h2>edit</h2></a>
+        {{/if}}
 
         <h3 class="tags">{{tags}}</h3>
         <a href="/profile/{{author}}"><h3>{{author}}</h3></a>

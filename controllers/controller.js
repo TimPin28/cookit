@@ -243,11 +243,21 @@ const controller = {
             await db.findMany(Comment, {ogPost:passed}, null, function(comments) {
                 post.comments=comments;
                 if(req.session.username) {
-                    res.render('viewPost', {_id: post._id, title: post.title,
-                        tags: post.tags, author: post.author, createdAt: post.createdAt,
-                        ingredients: post.ingredients, instructions: post.instructions, 
-                        image: post.image, loggedin: true, loggeduser: req.session.username, 
-                        comments: post.comments});
+                    if (req.session.username === post.author){
+                        res.render('viewPost', {_id: post._id, title: post.title,
+                            tags: post.tags, author: post.author, createdAt: post.createdAt,
+                            ingredients: post.ingredients, instructions: post.instructions, 
+                            image: post.image, comments: post.comments,
+                            loggedin: true, loggeduser: req.session.username, isauthor: true});
+                    }
+                    else {
+                        res.render('viewPost', {_id: post._id, title: post.title,
+                            tags: post.tags, author: post.author, createdAt: post.createdAt,
+                            ingredients: post.ingredients, instructions: post.instructions, 
+                            image: post.image, comments: post.comments,
+                            loggedin: true, loggeduser: req.session.username});
+                    }
+
                 }
                 else {
                     res.render('viewPost', {_id: post._id, title: post.title,
