@@ -232,9 +232,20 @@ const controller = {
         });
     },
 
-    viewProfile: async(req, res) => {
-        console.log('test');
-        res.render('/profile');
+    getProfile: async(req, res) => {
+        const username = req.params.username;
+        console.log(req.params.username);
+        User.getOne({username:username}, (err, user) => {
+            if(req.session.username) {
+                res.render('profile', {username: username, joindate: user.date,
+                    loggedin: true, loggeduser: req.session.username});
+            }
+            else {
+                res.render('profile', {username: username, joindate: user.date});
+            }
+            
+        });
+  
     }
 }
 

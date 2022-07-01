@@ -1,5 +1,5 @@
 <div class="header">
-    <a href="/"><img class="home-logo" src="images/Icon.png"></a>
+    <a href="/"><img class="home-logo" src="/images/Icon.png"></a>
     <div class="main-nav">
         <a href="/create"><div class="main-nav-button">Create</div></a>
         <a href="/settings"><div class="main-nav-button">Settings</div></a>
@@ -18,7 +18,7 @@
 
     <div class="side-nav">
         {{#if loggedin}}
-        <a href="/profile"><div class="side-nav-button">{{loggeduser}}</div></a>
+        <a href="/profile/{{loggeduser}}"><div class="side-nav-button">{{loggeduser}}</div></a>
         <a href="/logout"><div class="side-nav-button">Logout</div></a>
         {{else}}
         <a href="/login"><div class="side-nav-button">Login</div></a>

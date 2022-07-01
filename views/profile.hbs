@@ -1,8 +1,8 @@
 <html>
     <head>
-        <title>Timothy Pinawin's Profile</title>
-        <link rel = "stylesheet" type = "text/css" media = "all" href = "css/universal_styles.css">
-        <link rel = "stylesheet" type = "text/css" media = "all" href = "css/profile.css">
+        <title>{{username}}'s Profile</title>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/universal_styles.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/profile.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
@@ -15,10 +15,10 @@
                 <br><br><br>
                 <img src="../SampleData/Pfp1.jpg" id="profpic"/>
                 <br><br><br><br>
-                <h2>Timothy Pinawin</h2> <br><br>
-                <h3>Dec 31, 2021</h3> <br><br>
-                <h4>4 Following <span>4 Followers</span></h4> <br><br>
-                <button id="follow">Un/Follow</button> 
+                <h2>{{username}}</h2> <br><br>
+                <h3>{{joindate}}</h3> <br><br>
+                {{!-- <h4>4 Following <span>4 Followers</span></h4> <br><br>
+                <button id="follow">Un/Follow</button>  --}}
             </div>
 
             <div id="rightMain">
@@ -26,7 +26,6 @@
                     <button class="dropbtn">Sort</button>
                     <div class="dropdown-content">
                     <p>Alphabetical</p>
-                    <p>Rating</p>
                     <p>Date</p>
                     </div>
                 </div>

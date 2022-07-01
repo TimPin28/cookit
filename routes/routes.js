@@ -12,7 +12,7 @@ router.get('/create', isPrivate, controller.getCreate);
 router.get('/settings', isPrivate, controller.getSettings);
 router.get('/login', isPublic, controller.getLogin);
 router.get('/register', isPublic, controller.getRegister);
-router.get('/profile', controller.getProfile);
+router.get('/profile/:username', controller.getProfile);
 
 
 router.post('/register', isPublic, registerValidation, controller.registerUser);
