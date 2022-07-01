@@ -203,7 +203,7 @@ const controller = {
     },
 
     searchPost: async(req, res) => {
-        const posts = await Post.find({'title': {'$regex': req.body.searchPost, '$options': 'i'} })
+        const posts = await Post.find({'$or': [{'title': {'$regex': req.body.searchPost, '$options': 'i'}}, {'tags': {'$regex': req.body.searchPost, '$options': 'i'}}]})
         res.render('index', {posts});
     },
 
