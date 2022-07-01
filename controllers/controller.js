@@ -74,7 +74,6 @@ const controller = {
 
             User.getOne({email: email}, (err, result) => {
                 if (result) {
-                    console.log(result);
                     req.flash('error_msg', 'User already exists. Please login.');
                     res.redirect('/login');
                 }
@@ -204,13 +203,22 @@ const controller = {
 
     searchPost: async(req, res) => {
         const posts = await Post.find({'$or': [{'title': {'$regex': req.body.searchPost, '$options': 'i'}}, {'tags': {'$regex': req.body.searchPost, '$options': 'i'}}]})
-        res.render('index', {posts});
+        if (req.session.username){
+            res.render('index', {posts, loggedin: true, loggeduser: req.session.username});
+        }
+        else {
+            res.render('index', {posts});
+        }
+
     },
 
     deletePost: async(req, res) => {
         const user = req.session.username;
         var postID = req.get('referer');
         postID = postID.replace("http://localhost:3000/viewPost?valid=", "");
+
+        await Comment.deleteMany({ogPost: postID});
+        
         Post.deleteOne({author: user, _id: new Object(postID) }, (error) => {
             res.redirect('/');
         });
@@ -238,18 +246,15 @@ const controller = {
     },
 
     editComment: async(req, res) => {
-        console.log("INSIDE OF EDIT COMMENT" + req.body.comment_text);
         var postID = req.params._id;
         var ref = req.get('referer');
         ref = ref.replace("http://localhost:3000/viewPost?valid=", "");
-        console.log(postID);
 
         Comment.updateOne({_id: new Object(postID)}, {
             author: req.session.username,
             ogPost: ref,
             comment_text: req.body.comment_text
         }, (error) =>{
-            console.log(req.body.comment_text);
             res.redirect('back');
         })
 
@@ -259,7 +264,6 @@ const controller = {
         var passed = req.query.valid;
         await db.findOne(Post, {_id:passed}, null, async function(post) {
             await db.findMany(Comment, {ogPost:passed}, null, function(comments) {
-                console.log(comments);
                 post.comments=comments;
                 if(req.session.username) {
                     if (req.session.username === post.author){
@@ -393,7 +397,6 @@ const controller = {
 
     changepass: async (req, res) => {
         const errors = validationResult(req);
-        console.log('changepass');
 
         if(errors.isEmpty()) {
             const username = req.session.username;
@@ -419,7 +422,6 @@ const controller = {
                                 })
                             }
                             else {
-                                console.log('incorrect pw');
                                 req.flash('error_msg', 'Incorrect password. Please try again.');
                                 res.redirect('/settings');
                             }
@@ -452,7 +454,7 @@ const controller = {
                 fs.rename(uploadPath + '\\' + image.name, uploadPath + '\\' +  newfilename, (error) => {
                     if(error) throw error;
                     else {
-                        User.update({username: username}, {image: '/images/pfp/' + newfilename}, (error) => {
+                        User.update({username: username}, {pfp: '/images/pfp/' + newfilename}, (error) => {
                             req.flash('success_msg', 'Successfully changed profile picture!');
                             res.redirect('/settings');
                         });
