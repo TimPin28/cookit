@@ -4,15 +4,15 @@
 
     {{#if editable}}
     <a href="/delete-comment/{{_id}}">delete</a>
-    <button id="show">Edit</button>
+    <button class="show">Edit</button>
     {{/if}}
 
     <div class="center hideform">
-        <button id="close" style="float: right;">X</button> 
+        <button class="close" style="float: right;">X</button> 
         <h2 id = "headerEdit">Edit comment:</h2>
-        <form action="/edit-comment/{{_id}}" method="post" id="editcomment"> </form>
-            <textarea form="editcomment" name="comment_text" id="editcommentbox" rows="8" cols="75">{{comment_text}}</textarea>
+        <form action="/edit-comment/{{_id}}" method="post" id="editcomment-{{_id}}"></form>
+            <textarea form="editcomment-{{_id}}" name="comment_text" id="editcommentbox" rows="8" cols="75">{{comment_text}}</textarea>
             <br>
-            <input form="editcomment" type = submit id="button" value = "Edit Comment"> 
+            <input form="editcomment-{{_id}}" type = submit id="button" value = "Edit Comment"> 
     </div>
 </li>

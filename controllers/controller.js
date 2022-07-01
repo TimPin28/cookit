@@ -238,6 +238,7 @@ const controller = {
     },
 
     editComment: async(req, res) => {
+        console.log("INSIDE OF EDIT COMMENT" + req.body.comment_text);
         var postID = req.params._id;
         var ref = req.get('referer');
         ref = ref.replace("http://localhost:3000/viewPost?valid=", "");
