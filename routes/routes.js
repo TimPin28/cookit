@@ -26,9 +26,9 @@ router.get('/logout', isPrivate, controller.logoutUser);
 
 router.get('/viewPost', controller.viewPost);
 
-router.get('/deleteUser', controler.Deleteuser);
-router.get('/changepfp', controller.changepfp)
-//router.get('/viewComments', controller.viewComments);
+// router.get('/deleteUser', controler.Deleteuser);
+// router.get('/changepfp', controller.changepfp)
+// router.get('/viewComments', controller.viewComments);
 
 
 module.exports = router;

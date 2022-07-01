@@ -5,6 +5,7 @@ const User = require('../database/models/User.js');
 const Comment = require('../database/models/Comments.js');
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
+const fs = require('fs');
 
 
 const controller = {
@@ -169,40 +170,36 @@ const controller = {
         }
     },
 
-    submitPost: function(req, res) { //postid-username
-        const {image} = req.files;
-        console.log(image);
+    submitPost: function(req, res) {
+        const image = req.files.image;
+        const uploadPath = path.join(__dirname, '..', 'public', 'images', 'posts');
 
-        const post = Post.create({
-            author: req.session.username,
-            ...req.body,
-            image: null,
-            comments: null
-        }, (error,post) => {
-            console.log(image.name);
-            image.name = post._id.toString() + '-' + post.author;
-            post.image = '/images/' + image.name;
-            
-            image.mv(path.resolve(__dirname, '../public/images', image.name), (error, post) => {
-                if(error) console.log(error);
-            })
-            var string = encodeURIComponent(post._id.toString());
-                res.redirect('/viewPost?valid=' + string);
+        let imgtype;
+
+        if(image.mimetype === 'image/png') { imgtype = '.png' }
+        else if (image.mimetype === 'image/jpeg') { imgtype = '.jpg' }
+
+        image.mv(path.join(__dirname, '..', 'public', 'images', 'posts', image.name), (error) => {
+            if(error) throw error;
+            Post.create({
+                author: req.session.username,
+                ...req.body,
+                comments: null,
+                image: ''
+            }, (error, post) => {
+                const postid = post._id.toString();
+                const author = post.author;
+                const newfilename = postid + '-' + author + imgtype;
+                fs.rename(uploadPath + '\\' + image.name, uploadPath + '\\' +  newfilename, (error) => {
+                    if(error) throw error;
+                    post.image = '/images/posts/' + newfilename;
+                    post.save();
+                    var string = encodeURIComponent(postid);
+                    res.redirect('/viewPost?valid=' + string);
+                });
+
+            });
         });
-
-
-        // image.mv(path.resolve(__dirname, '../public/images', image.name),(error) => {
-        //      Post.create({ 
-        //         author: req.session.username,
-        //         ...req.body,comments: null,
-        //         image:'/images/'+ req.body._id + '-' + req.session.username
-        //     }, 
-        //     (error,post) => {
-        //             post.image = '/images/'+ req.body._id + '-' + req.session.username;
-        //             var string = encodeURIComponent(post._id.toString());
-        //             res.redirect('/viewPost?valid=' + string);
-        //     })
-        // })
     },
 
     searchPost: async(req, res) => {
