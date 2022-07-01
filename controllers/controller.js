@@ -243,14 +243,14 @@ const controller = {
             await db.findMany(Comment, {ogPost:passed}, null, function(comments) {
                 post.comments=comments;
                 if(req.session.username) {
-                    res.render('viewPost', {title: post.title,
+                    res.render('viewPost', {_id: post._id, title: post.title,
                         tags: post.tags, author: post.author, createdAt: post.createdAt,
                         ingredients: post.ingredients, instructions: post.instructions, 
                         image: post.image, loggedin: true, loggeduser: req.session.username, 
                         comments: post.comments});
                 }
                 else {
-                    res.render('viewPost', {title: post.title,
+                    res.render('viewPost', {_id: post._id, title: post.title,
                         tags: post.tags, author: post.author, createdAt: post.createdAt,
                         ingredients: post.ingredients, instructions: post.instructions, 
                         image: post.image, comments: post.comments});
@@ -263,20 +263,22 @@ const controller = {
     editPost: async(req, res) => {
         const name = req.session.username;
         var postID = req.get('referer');
-        postID = postID.replace("http://localhost:3000/viewPost?valid=", "");
+        console.log(postID + "EDITPOST");
+        postID = postID.replace("http://localhost:3000/edit-post-form/", "");
     
         await db.updateOne(Post, {_id: new Object(postID)}, {
-            author: req.session.username, ...req.body,comments: null,
+            author: req.session.username, ...req.body,image: '/images/posts/' + postID + '-' + name, comments: null,
             }, (error) => {
-            res.redirect('referer');
+            res.redirect('/');
         });
     },
 
     editPostForm: async(req,res) => {
         var postID = req.get('referer');
+        console.log(postID);
         postID = postID.replace("http://localhost:3000/viewPost?valid=", "");
-        await db.findOne(Post,{_id: new Object(postID)}, (error,post) => {
-            res.render('createedit', post);
+        Post.findOne({_id: new Object(postID)}, (error, post) => {
+            res.render('CreateEdit', post);
         });
     },
 
