@@ -13,6 +13,7 @@ router.get('/settings', isPrivate, controller.getSettings);
 router.get('/login', isPublic, controller.getLogin);
 router.get('/register', isPublic, controller.getRegister);
 router.get('/profile/:username', controller.getProfile);
+router.get('/profile/:username/alpbt', controller.getProfilealpbt);
 
 
 router.post('/register', isPublic, registerValidation, controller.registerUser);
@@ -24,7 +25,7 @@ router.post('/search-post', controller.searchPost);
 router.get('/logout', isPrivate, controller.logoutUser);
 
 router.get('/viewPost', controller.viewPost);
-router.get('/viewComments', controller.viewComments);
+//router.get('/viewComments', controller.viewComments);
 
 
 module.exports = router;

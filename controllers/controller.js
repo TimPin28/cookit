@@ -199,13 +199,13 @@ const controller = {
         })
     },
 
-    viewComments: async(req,res) => {
-        var ID = req.get('referer');
-        ID = ID.replace("http://localhost:3000/viewPost?valid=", "");
-        await db.findMany(Comment, {_id:ID}, null, function(comments) {
-            res.render('viewPost', comments);
-        });
-    },
+    // viewComments: async(req,res) => {
+    //     var ID = req.get('referer');
+    //     ID = ID.replace("http://localhost:3000/viewPost?valid=", "");
+    //     await db.findMany(Comment, {_id:ID}, null, function(comments) {
+    //         res.render('viewPost', comments);
+    //     });
+    // },
 
     viewPost: async(req,res) => {
         var passed = req.query.valid;
@@ -235,6 +235,21 @@ const controller = {
     getProfile: async(req, res) => {
         const username = req.params.username;
         const posts = await Post.find({author: username}).sort({createdAt: -1});
+        User.getOne({username:username}, (err, user) => {
+            if(req.session.username) {
+                res.render('profile', {posts, username: username, joindate: user.date, 
+                    pfp: user.pfp, loggedin: true, loggeduser: req.session.username});
+            }
+            else {
+                res.render('profile', {posts, username: username, joindate: user.date, 
+                    pfp: user.pfp});
+            }
+        });
+    },
+
+    getProfilealpbt: async(req,res) => {
+        const username = req.params.username;
+        const posts = await Post.find({author: username}).collation({'locale':'en'}).sort({title: 1});
         User.getOne({username:username}, (err, user) => {
             if(req.session.username) {
                 res.render('profile', {posts, username: username, joindate: user.date, 

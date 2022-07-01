@@ -17,16 +17,14 @@
                 <br><br><br><br>
                 <h2>{{username}}</h2> <br><br>
                 <h3>{{joindate}}</h3> <br><br>
-                {{!-- <h4>4 Following <span>4 Followers</span></h4> <br><br>
-                <button id="follow">Un/Follow</button>  --}}
             </div>
 
             <div id="rightMain">
                 <div class="dropdown">
                     <button class="dropbtn">Sort</button>
                     <div class="dropdown-content">
-                    <p>Alphabetical</p>
-                    <p>Date</p>
+                    <a href="/profile/{{username}}/alpbt"><p>Alphabetical</p></a>
+                    <a href="/profile/{{username}}"><p>Date</p></a>
                     </div>
                 </div>
 
@@ -35,7 +33,7 @@
                 {{#each posts}}
                 <div class="post"><a href="/viewPost?valid={{this._id}}">
                     <div class=food-thumbnail>
-                        <img src = '../{{this.image}}'>
+                        <img src = '{{this.image}}'>
                     </div>
                     <div class="post-details">
                         <div class="title">
@@ -48,25 +46,6 @@
                     </div>
                 </a></div>
                 {{/each}}
-
-                {{!-- <ol>
-                    <li>
-                        <div class="post"><a href="../PostPage/PostChicken.html">
-                            <div class=food-thumbnail>
-                                <img src="../SampleData/Chicken.jpg">
-                            </div>
-                            <div class="post-details">
-                                <div class="title">
-                                    <h2>Crispy Fried Chicken</h2>
-                                </div>             
-                                <div class="tags">chicken, fried, 35 mins</div>
-                                <div class="user">Timothy Pinawin</div>
-            
-                                <div class="date">02-May-2022 01:30 PM</div>
-                            </div>
-                        </a></div>
-                    </li>
-                </ol> --}}
 
             </div>
         </div>
