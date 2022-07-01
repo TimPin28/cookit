@@ -2,29 +2,25 @@
     <head>
         <title>Register</title>
         <script src = "js/Register.js"></script>
-        <link rel = "stylesheet" type = "text/css" media = "all" href = "css/register.css">
-        <link rel = "stylesheet" type = "text/css" media = "all" href = "css/universal_styles.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/register.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/messages.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/universal_styles.css">
     </head>
 
     <body>
 
-        {{>messages}}
+        
         <div id="register-container">
             <a href="/"><img id="logo" src="images/Icon.png" /></a>
+            
             <form id="register-form" action ="/register" method="POST">
                 <div>
-                    <br>
-                    <input type="text" placeholder="Username" id ="username" name="username" size = 30>
-                    <br><br>
-                    <input type="email" placeholder ="Email" id="email" name="email" size=30>
-                    <br><br>
-                    <input type="password" placeholder="Password" id="password" name="password" size = 30>
-                    <br><br>
-                    <input type="password" placeholder="Confirm Password" id="confirm-password" name="confirm-password" size = 30>
-
-                    <br><br>
-
+                    <input type="text" placeholder="Username" id ="username" class="register-input" name="username">
+                    <input type="email" placeholder ="Email" id="email" class="register-input" name="email">
+                    <input type="password" placeholder="Password" id="password" class="register-input" name="password">
+                    <input type="password" placeholder="Confirm Password" id="confirm-password" class="register-input" name="confirm-password">
                     <input type="submit" id="button" value="Register">
+                    {{>messages}}
                 </div>
             </form>
         </div>
