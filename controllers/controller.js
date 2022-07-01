@@ -324,20 +324,39 @@ const controller = {
 
     changepass: async (req, res) => {
         const errors = validationResult(req);
+        console.log('changepass');
 
         if(errors.isEmpty()) {
+            const username = req.session.username;
             const oldpass = req.body.oldpass;
             const newpass = req.body.newpass;
-            const cnewpass = req.body.cnewpass;
 
-            const saltRounds = 10;
+            User.getOne({username: username}, (err, user) => {
+                if (err) throw err;
+                else {
+                    if (user) {
+                        bcrypt.compare(oldpass, user.password, (err, result) => {
+                            if (result) {
+                                const saltRounds = 10;
 
-            bcrypt.hash(newpass, saltRounds, (err, hashed) => {
-                User.getOne({username: req.session.username}, (err, user) => {
-                    user.update({password}, hashed, (err, user) => {
-                        if(err) throw err;
-                    });
-                });
+                                bcrypt.hash(newpass, saltRounds, (err, hashed) => {
+                                    User.update({username: username}, {$set: {password: hashed}}, (err, user) => {
+                                        if (err) throw err;
+                                        else {
+                                            req.flash('success_msg', 'Change password success!');
+                                            res.redirect('/settings');
+                                        }
+                                    })
+                                })
+                            }
+                            else {
+                                console.log('incorrect pw');
+                                req.flash('error_msg', 'Incorrect password. Please try again.');
+                                res.redirect('/settings');
+                            }
+                        });
+                    }
+                }
             });
         }
         else {
