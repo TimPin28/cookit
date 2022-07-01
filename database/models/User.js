@@ -4,7 +4,8 @@ const UserSchema = new mongoose.Schema({
     username: {type: String, required: true},
     email:    {type: String, required: true},
     password: {type: String, min: 6, required: true},
-    date:     {type: Date, default: Date.now}
+    date:     {type: Date, default: Date.now},
+    pfp:      {type: String, default: '/images/pfp/default.png'}
 });
 
 const User = mongoose.model('User', UserSchema);
