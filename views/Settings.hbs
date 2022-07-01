@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Settings</title>
+        <script src = "js/settings.js"></script>
         <link rel = "stylesheet" type = "text/css" media = "all" href = "css/settings.css">
         <link rel = "stylesheet" type = "text/css" media = "all" href = "css/universal_styles.css">
     </head>
@@ -19,25 +20,52 @@
 
         <br><br>
 
-        <div id="change-password">
-            <h2>Change Password</h2>
-            <form id="change-password-form" action="/changepass" method="POST">
-                <input type="password">
-            </form>
-        </div>
+        <button onclick = "collapse()" type="button" class="collapsible"><h2>Change Password</h2></button>
+            <div class="content">
+                <form id="change-password-form" action="/changepass" method="POST">
+                    <input type="password" name = "old" placeholder="Old Password">
+                    <input type="password" name = "new" placeholder="New Password">
+                    <input type="password" name = "cnew" placeholder="Confirm New Password">
+                    <input type = submit id="button" value = "Change Password">
+                </form>
+            </div>
 
         <br><br>
 
-        <div id="change-profile-picture">
-            <h2>Change Profile Picture</h2>
-            <form id="change-profile-picture-form" action="/changepfp" method="POST">
-                <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg"/>
-            </form>
-        </div>
+        <button onclick = "collapse()" type="button" class="collapsible"><h2>Change Profile Picture</h2></button>
+            <div class="content">
+                <form id="change-profile-picture-form" action="/changepfp" method="POST">
+                    <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg"/>
+                    <input type = submit id="button" value = "Save Profile Picture">
+                </form>
+            </div>
+        
+        <br><br>
+        
+        <button onclick = "collapse()" type="button" class="collapsible"><h2>Delete Account</h2></button>
+            <div class="content">
+                <h3>Are you sure you want to delete your account?</h3>
+                <h3>Everything related to your account will be deleted!</h3>
+                <form action = "/deleteUser" id="createForm">
+                    <input type = submit id="deletebutton" value = "Delete Account">
+                </form>
+            </div>
 
-        <form action = "" id="createForm">
-            <input type = submit id="button" value = "Delete Account">
-        </form>
+        {{!-- <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
 
+            for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                content.style.display = "none";
+                } else {
+                content.style.display = "block";
+                }
+            });
+            }
+        </script> --}}
     </body>
 </html>

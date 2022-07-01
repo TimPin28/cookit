@@ -29,3 +29,17 @@ exports.getOne = function(query, next) {
       next(err, user);
     });
 };
+
+exports.delete = function(conditions, next) {
+    User.deleteOne(conditions, function (error, user) {
+      next(error, user);
+    });
+}
+
+exports.update = function(filter, update, next) {
+    User.updateOne(filter, update, function(error, user) {
+      next(error, user);
+    });
+}
+
+//module.exports = User;

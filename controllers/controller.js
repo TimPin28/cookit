@@ -171,38 +171,37 @@ const controller = {
 
     submitPost: function(req, res) { //postid-username
         const {image} = req.files;
-        console.log(image);
+        // console.log(image);
 
-        const post = Post.create({
-            author: req.session.username,
-            ...req.body,
-            image: null,
-            comments: null
-        }, (error,post) => {
-            console.log(image.name);
-            image.name = post._id.toString() + '-' + post.author;
-            post.image = '/images/' + image.name;
+        // const post = Post.create({
+        //     author: req.session.username,
+        //     ...req.body,
+        //     image: null,
+        //     comments: null
+        // }, (error,post) => {
+        //     console.log(image.name);
+        //     image.name = post._id.toString() + '-' + post.author;
+        //     post.image = '/images/' + image.name;
             
-            image.mv(path.resolve(__dirname, '../public/images', image.name), (error, post) => {
-                if(error) console.log(error);
-            })
-            var string = encodeURIComponent(post._id.toString());
-                res.redirect('/viewPost?valid=' + string);
-        });
-
-
-        // image.mv(path.resolve(__dirname, '../public/images', image.name),(error) => {
-        //      Post.create({ 
-        //         author: req.session.username,
-        //         ...req.body,comments: null,
-        //         image:'/images/'+ req.body._id + '-' + req.session.username
-        //     }, 
-        //     (error,post) => {
-        //             post.image = '/images/'+ req.body._id + '-' + req.session.username;
-        //             var string = encodeURIComponent(post._id.toString());
-        //             res.redirect('/viewPost?valid=' + string);
+        //     image.mv(path.resolve(__dirname, '../public/images', image.name), (error, post) => {
+        //         if(error) console.log(error);
         //     })
-        // })
+        //     var string = encodeURIComponent(post._id.toString());
+        //         res.redirect('/viewPost?valid=' + string);
+        // });
+
+        image.mv(path.resolve(__dirname, '../public/images', image.name),(error) => {
+             Post.create({ 
+                author: req.session.username,
+                ...req.body,comments: null,
+                image:'/images/'+ image.name
+            }, 
+            (error,post) => {
+                    post.image = '/images/'+ req.body._id + '-' + req.session.username;
+                    var string = encodeURIComponent(post._id.toString());
+                    res.redirect('/viewPost?valid=' + string);
+            })
+        })
     },
 
     searchPost: async(req, res) => {
@@ -221,14 +220,6 @@ const controller = {
             //res.render('index', {posts});
         })
     },
-
-    // viewComments: async(req,res) => {
-    //     var ID = req.get('referer');
-    //     ID = ID.replace("http://localhost:3000/viewPost?valid=", "");
-    //     await db.findMany(Comment, {_id:ID}, null, function(comments) {
-    //         res.render('viewPost', comments);
-    //     });
-    // },
 
     viewPost: async(req,res) => {
         var passed = req.query.valid;
@@ -285,12 +276,24 @@ const controller = {
         });
     },
 
-    Deleteuser: async(req, res) => {
-        const username = req.session.username;
+    deleteUser: async (req, res) => {
+        const name = req.session.username;
+
+        await db.deleteMany(Post, {author: name}, async (error) => {
+            await User.delete({username: name}, (error) => {
+                res.redirect('/logout');
+            })
+        })
+
         
     },
-
+    
     changepfp: async(req,res) =>{
+        const username = req.session.username;
+        const {image} = req.body;
+        await User.update({username: username}, {pfp: '/images/pfp/' + image}, (error) => {
+            res.redirect('/profile/' + username);
+        })
 
     }
 }

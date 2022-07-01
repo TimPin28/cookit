@@ -26,8 +26,8 @@ router.get('/logout', isPrivate, controller.logoutUser);
 
 router.get('/viewPost', controller.viewPost);
 
-router.get('/deleteUser', controler.Deleteuser);
-router.get('/changepfp', controller.changepfp)
+router.get('/deleteUser', controller.deleteUser);
+router.post('/changepfp', controller.changepfp)
 //router.get('/viewComments', controller.viewComments);
 
 
