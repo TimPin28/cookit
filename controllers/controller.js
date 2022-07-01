@@ -208,8 +208,22 @@ const controller = {
     },
 
     deletePost: async(req, res) => {
-        // const user = req.session.username;
-        // const postName = req.
+        const user = req.session.username;
+        var postID = req.get('referer');
+        postID = postID.replace("http://localhost:3000/viewPost?valid=", "");
+        Post.deleteOne({author: user, _id: new Object(postID) }, (error) => {
+            res.redirect('/');
+        });
+    },
+
+    deleteComment: async(req, res) => {
+        const user = req.session.username;
+        var postID = req.params._id;        
+        
+        Comment.deleteOne({_id: new Object(postID)}, (error) => {
+            res.redirect('back');
+        });
+
     },
 
     commentPost: function(req, res) {
@@ -220,7 +234,6 @@ const controller = {
 
         Comment.create({author: username, ogPost: ID, comment_text: body}, (error) => {
             res.redirect('back');
-            //res.render('index', {posts});
         })
     },
 
@@ -230,8 +243,6 @@ const controller = {
             await db.findMany(Comment, {ogPost:passed}, null, function(comments) {
                 post.comments=comments;
                 if(req.session.username) {
-                    console.log(post);
-                    console.log(comments);
                     res.render('viewPost', {title: post.title,
                         tags: post.tags, author: post.author, createdAt: post.createdAt,
                         ingredients: post.ingredients, instructions: post.instructions, 
@@ -289,6 +300,10 @@ const controller = {
                 });
             });
         });
+    },
+
+    changepass: async (req,res) => {
+
     },
     
     changepfp: async(req,res) =>{

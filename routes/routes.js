@@ -14,6 +14,7 @@ router.get('/login', isPublic, controller.getLogin);
 router.get('/register', isPublic, controller.getRegister);
 router.get('/profile/:username', controller.getProfile);
 router.get('/profile/:username/alpbt', controller.getProfilealpbt);
+router.get('/delete-comment/:_id', controller.deleteComment);
 
 
 router.post('/register', isPublic, registerValidation, controller.registerUser);
@@ -25,10 +26,9 @@ router.post('/search-post', controller.searchPost);
 router.get('/logout', isPrivate, controller.logoutUser);
 
 router.get('/viewPost', controller.viewPost);
+router.get('/delete-post', controller.deletePost)
 
 router.get('/deleteUser', controller.deleteUser);
 router.post('/changepfp', controller.changepfp)
-//router.get('/viewComments', controller.viewComments);
-
 
 module.exports = router;
