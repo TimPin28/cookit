@@ -1,12 +1,12 @@
 <html>
     <head>
         <title>Create a Dish</title>
-        <script src = "js/create.js"></script>
+        <script src = "/js/create.js"></script>
         <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
         <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/balloon/ckeditor.js"></script>
-        <link rel = "stylesheet" type = "text/css" media = "all" href = "css/create.css">
-        <link rel = "stylesheet" type = "text/css" media = "all" href = "css/universal_styles.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/create.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/universal_styles.css">
     </head>
 
     <body>
@@ -22,9 +22,9 @@
                         <br><br>
                         <input name = "tags" type = "text" value = {{tags}} id = "tags" size = 20>
                         <br><br>
-                        <textarea name = "ingredients" form="createForm" value = {{ingredients}} id="ingredients" rows="10" cols="100"></textarea>
+                        <textarea name = "ingredients" form="createForm" id="ingredients" rows="10" cols="100">{{ingredients}} </textarea>
                         <br><br>
-                        <textarea name = "instructions" form="createForm" value = {{instructions}} id="instructions" rows="10" cols="100"></textarea>
+                        <textarea name = "instructions" form="createForm" id="instructions" rows="10" cols="100">{{instructions}}</textarea>
                         <br><br>
                         <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg" onchange="readURL(this);"/>
                         <br><br>
@@ -33,7 +33,7 @@
                 </form>
             </div>
             <div id="right">
-                <img id = "foodimg" src = {{image}} alt = "Your Image"/>
+                <img id = "foodimg" src = "#" alt = "Your Image"/>
             </div>
         </div>
 
