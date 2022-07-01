@@ -234,13 +234,14 @@ const controller = {
 
     getProfile: async(req, res) => {
         const username = req.params.username;
+        const posts = await Post.find({author: username}).sort({createdAt: -1});
         User.getOne({username:username}, (err, user) => {
             if(req.session.username) {
-                res.render('profile', {username: username, joindate: user.date,
+                res.render('profile', {posts, username: username, joindate: user.date,
                     loggedin: true, loggeduser: req.session.username});
             }
             else {
-                res.render('profile', {username: username, joindate: user.date});
+                res.render('profile', {posts, username: username, joindate: user.date});
             }
         });
     }

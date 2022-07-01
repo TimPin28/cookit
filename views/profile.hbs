@@ -32,7 +32,24 @@
 
                 <br><br>
 
-                <ol>
+                {{#each posts}}
+                <div class="post"><a href="/viewPost?valid={{this._id}}">
+                    <div class=food-thumbnail>
+                        <img src = '../{{this.image}}'>
+                    </div>
+                    <div class="post-details">
+                        <div class="title">
+                            <h2>{{this.title}}</h2>
+                        </div>             
+                        <div class="tags">{{this.tags}}</div>
+                        <div class="user">{{this.author}}</div>
+
+                        <div class="date">{{this.createdAt}}</div>
+                    </div>
+                </a></div>
+                {{/each}}
+
+                {{!-- <ol>
                     <li>
                         <div class="post"><a href="../PostPage/PostChicken.html">
                             <div class=food-thumbnail>
@@ -49,7 +66,7 @@
                             </div>
                         </a></div>
                     </li>
-                </ol>
+                </ol> --}}
 
             </div>
         </div>
