@@ -366,8 +366,8 @@ const controller = {
         const name = req.session.username;
 
         await db.deleteMany(Post, {author: name}, async (error) => {
-            await User.delete({username: name}, async (error) => {
-                await Comment.deleteMany({author: name}, (error) => {
+            User.delete({username: name}, async (error) => {
+                Comment.deleteMany({author: name}, (error) => {
                     res.redirect('/logout');
                 });
             });
@@ -421,26 +421,29 @@ const controller = {
     
     changepfp: async(req,res) =>{ 
         const username = req.session.username;
-        const image = req.files.image;
-        const uploadPath = path.join(__dirname, '..', 'public', 'images', 'pfp');
+        if (req.files !== null) {
+            const image = req.files.image;
+            const uploadPath = path.join(__dirname, '..', 'public', 'images', 'pfp');
 
-        let imgtype;
-        if(image.mimetype === 'image/png') { imgtype = '.png' }
-        else if (image.mimetype === 'image/jpeg') { imgtype = '.jpg' }
+            let imgtype;
+            if(image.mimetype === 'image/png') { imgtype = '.png' }
+            else if (image.mimetype === 'image/jpeg') { imgtype = '.jpg' }
 
-        image.mv(path.join(__dirname, '..', 'public', 'images', 'pfp', image.name), (err) => {
+            image.mv(path.join(__dirname, '..', 'public', 'images', 'pfp', image.name), (err) => {
 
-            const newfilename = username + imgtype;
-            fs.rename(uploadPath + '\\' + image.name, uploadPath + '\\' +  newfilename, (error) => {
-                if(error) throw error;
-                else {
-                    User.update({username: username}, {image: '/images/pfp/' + newfilename}, (error) => {
-                        req.flash('success_msg', 'Successfully changed profile picture!');
-                        res.redirect('/settings');
-                    });
-                }
+                const newfilename = username + imgtype;
+                fs.rename(uploadPath + '\\' + image.name, uploadPath + '\\' +  newfilename, (error) => {
+                    if(error) throw error;
+                    else {
+                        User.update({username: username}, {image: '/images/pfp/' + newfilename}, (error) => {
+                            req.flash('success_msg', 'Successfully changed profile picture!');
+                            res.redirect('/settings');
+                        });
+                    }
+                });
             });
-        });
+        }
+        else res.redirect('back');
     }
 }
 
