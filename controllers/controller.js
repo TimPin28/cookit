@@ -207,6 +207,11 @@ const controller = {
         res.render('index', {posts});
     },
 
+    deletePost: async(req, res) => {
+        // const user = req.session.username;
+        // const postName = req.
+    },
+
     commentPost: function(req, res) {
         var ID = req.get('referer');
         var body = req.body.comment_text;
@@ -218,14 +223,6 @@ const controller = {
             //res.render('index', {posts});
         })
     },
-
-    // viewComments: async(req,res) => {
-    //     var ID = req.get('referer');
-    //     ID = ID.replace("http://localhost:3000/viewPost?valid=", "");
-    //     await db.findMany(Comment, {_id:ID}, null, function(comments) {
-    //         res.render('viewPost', comments);
-    //     });
-    // },
 
     viewPost: async(req,res) => {
         var passed = req.query.valid;
@@ -282,13 +279,24 @@ const controller = {
         });
     },
 
-    Deleteuser: async(req, res) => {
-        const username = req.session.username;
-        
+    deleteUser: async (req, res) => {
+        const name = req.session.username;
+
+        await db.deleteMany(Post, {author: name}, async (error) => {
+            await User.delete({username: name}, async (error) => {
+                await Comment.deleteMany({author: name}, (error) => {
+                    res.redirect('/logout');
+                });
+            });
+        });
     },
-
+    
     changepfp: async(req,res) =>{
-
+        const username = req.session.username;
+        const {image} = req.body;
+        await User.update({username: username}, {pfp: '/images/pfp/' + image}, (error) => {
+            res.redirect('/profile/' + username);
+        });
     }
 }
 

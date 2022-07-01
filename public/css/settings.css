@@ -6,7 +6,7 @@ h2 {
     margin: 20px 0 100px 100px;
 }
 
-#button {
+#deletebutton {
     background-color: red; 
     border: none;
     color: white;
@@ -19,6 +19,6 @@ h2 {
 
 }
 
-#button:hover {
+#deletebutton:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
