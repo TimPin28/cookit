@@ -262,20 +262,56 @@ const controller = {
 
     editPost: async(req, res) => {
         const name = req.session.username;
-        var postID = req.get('referer');
-        console.log(postID + "EDITPOST");
-        postID = postID.replace("http://localhost:3000/edit-post-form/", "");
-    
-        await db.updateOne(Post, {_id: new Object(postID)}, {
-            author: req.session.username, ...req.body,image: '/images/posts/' + postID + '-' + name, comments: null,
-            }, (error) => {
-            res.redirect('/');
+        const image = req.files.image;
+        const uploadPath = path.join(__dirname, '..', 'public', 'images', 'posts');
+
+        let imgtype;
+        if(image.mimetype === 'image/png') { imgtype = '.png' }
+        else if (image.mimetype === 'image/jpeg') { imgtype = '.jpg' }
+
+        image.mv(path.join(__dirname, '..', 'public', 'images', 'posts', image.name), async(err) => {
+            var postID = req.get('referer');
+            postID = postID.replace("http://localhost:3000/edit-post-form/", "");
+            
+            Post.findOne({_id: postID}, (err, user) => {
+                if(err) {console.log('not found');}
+                else {
+                    const postid = post._id.toString();
+                    const author = post.author;
+                    const newfilename = postid + '-' + author + imgtype;
+                    fs.rename(uploadPath + '\\' + image.name, uploadPath + '\\' +  newfilename, (error) => {
+                        if(error) throw error;
+                        post.image = '/images/posts/' + newfilename;
+                        post.save();
+                    });
+                }
+            })
+
+            
+            
+            
+            await db.updateOne(Post, {_id: new Object(postID)}, {
+                author: req.session.username, ...req.body,image: '/images/posts/' + postID + '-' + name, comments: null,
+                }, (error) => {
+                res.redirect('/viewPost?valid=' + postID);
+            });
         });
+
+        // const name = req.session.username;
+        // var postID = req.get('referer');
+        // console.log(postID + "EDITPOST");
+        // postID = postID.replace("http://localhost:3000/edit-post-form/", "");
+    
+        // await db.updateOne(Post, {_id: new Object(postID)}, {
+        //     author: req.session.username, ...req.body,image: '/images/posts/' + postID + '-' + name, comments: null,
+        //     }, (error) => {
+        //     res.redirect('/');
+        // });
+
     },
 
     editPostForm: async(req,res) => {
         var postID = req.get('referer');
-        console.log(postID);
         postID = postID.replace("http://localhost:3000/viewPost?valid=", "");
         Post.findOne({_id: new Object(postID)}, (error, post) => {
             res.render('CreateEdit', post);
@@ -369,7 +405,7 @@ const controller = {
         
     },
     
-    changepfp: async(req,res) =>{
+    changepfp: async(req,res) =>{ 
         const username = req.session.username;
         const {image} = req.body;
         await User.update({username: username}, {pfp: '/images/pfp/' + image}, (error) => {
