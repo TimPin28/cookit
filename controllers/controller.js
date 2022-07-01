@@ -384,9 +384,25 @@ const controller = {
     
     changepfp: async(req,res) =>{ 
         const username = req.session.username;
-        const {image} = req.body;
-        await User.update({username: username}, {pfp: '/images/pfp/' + image}, (error) => {
-            res.redirect('/profile/' + username);
+        const image = req.files.image;
+        const uploadPath = path.join(__dirname, '..', 'public', 'images', 'pfp');
+
+        let imgtype;
+        if(image.mimetype === 'image/png') { imgtype = '.png' }
+        else if (image.mimetype === 'image/jpeg') { imgtype = '.jpg' }
+
+        image.mv(path.join(__dirname, '..', 'public', 'images', 'pfp', image.name), (err) => {
+
+            const newfilename = username + imgtype;
+            fs.rename(uploadPath + '\\' + image.name, uploadPath + '\\' +  newfilename, (error) => {
+                if(error) throw error;
+                else {
+                    User.update({username: username}, {image: '/images/pfp/' + newfilename}, (error) => {
+                        req.flash('success_msg', 'Successfully changed profile picture!');
+                        res.redirect('/settings');
+                    });
+                }
+            });
         });
     }
 }

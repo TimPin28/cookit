@@ -32,7 +32,7 @@
             </tr>
             <tr>
                 <td><h2>Change Profile Picture</h2></td>
-                <td><form id="change-profile-picture-form" action="/changepfp" method="POST">
+                <td><form id="change-profile-picture-form" action="/changepfp" enctype="multipart/form-data" method="POST">
                     <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg"/> <br>
                     <input type = submit id="button" value = "Save Profile Picture"> <br>
                 </form></td>
