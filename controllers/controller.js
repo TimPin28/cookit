@@ -410,8 +410,10 @@ const controller = {
 
         await db.deleteMany(Post, {author: name}, async (error) => {
             User.delete({username: name}, async (error) => {
-                Comment.deleteMany({author: name}, (error) => {
-                    res.redirect('/logout');
+                Comment.deleteMany({author: name}, async (error) => {
+                    await Comment.deleteMany({ogPost: postID}, (error) => {
+                        res.redirect('/logout');
+                    });
                 });
             });
         });
