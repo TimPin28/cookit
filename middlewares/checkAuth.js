@@ -12,7 +12,6 @@ exports.isPublic = (req, res, next) => {
     if (req.session.userid) {
         res.redirect('/');
     } else {
-        console.log('not authed');
         return next();
     }
 };
