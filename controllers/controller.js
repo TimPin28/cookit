@@ -218,6 +218,15 @@ const controller = {
         postID = postID.replace("http://localhost:3000/viewPost?valid=", "");
 
         await Comment.deleteMany({ogPost: postID});
+
+        Post.findOne({_id: new Object(postID)}, async(error, post) => {
+            var image = "./public"+post.image;
+            await fs.unlink(image, (error) => {
+                if(error) {
+                    console.error(err);
+                }
+            });
+        })
         
         Post.deleteOne({author: user, _id: new Object(postID) }, (error) => {
             res.redirect('/');
@@ -388,6 +397,15 @@ const controller = {
 
     deleteUser: async (req, res) => {
         const name = req.session.username;
+
+        User.getOne({username: name}, async (err, user) => {
+            var image = "./public"+user.pfp;
+            await fs.unlink(image, (error) => {
+                if(error) {
+                    console.error(err);
+                }
+            });
+        })
 
         await db.deleteMany(Post, {author: name}, async (error) => {
             User.delete({username: name}, async (error) => {
