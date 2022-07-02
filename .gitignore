@@ -1,2 +1,10 @@
 node_modules/
-public/images/
+
+!public/images/
+!public/images/pfp
+!public/images/posts
+public/images/pfp/*
+public/images/posts/*
+
+!public/images/pfp/default.png
+!public/images/Icon.png
