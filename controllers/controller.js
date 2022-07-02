@@ -403,6 +403,14 @@ const controller = {
             });
         })
 
+        const posts = await Post.find({author: name});
+        for (let i = 0; i < posts.length; i++) {
+            var find = posts[i]._id.toString();
+            db.deleteMany(Comment, {ogPost: find}, (error) => {
+                
+            });
+        }
+
         await db.deleteMany(Post, {author: name}, async (error) => {
             User.delete({username: name}, async (error) => {
                 Comment.deleteMany({author: name}, (error) => {
