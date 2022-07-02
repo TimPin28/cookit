@@ -40,7 +40,7 @@ app.use(express.static('public'));
 
 // Sessions
 app.use(session({
-    store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/cookitDB' }),
+    store: MongoStore.create({ mongoUrl: 'mongodb://cookit-apdev.herokuapp.com' }),
     secret: 'randomsecret',
     resave: false,
     saveUninitialized: true,
