@@ -352,7 +352,7 @@ const controller = {
         var postID = req.get('referer');
         postID = postID.replace("http://localhost:3000/viewPost?valid=", "");
         Post.findOne({_id: new Object(postID)}, (error, post) => {
-            res.render('CreateEdit', post);
+            res.render('createedit', post);
         });
     },
 
