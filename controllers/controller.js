@@ -321,8 +321,6 @@ const controller = {
             image.mv(path.join(__dirname, '..', 'public', 'images', 'posts', image.name), (err) => {
                 const newfilename = postID + '-' + username + imgtype;
                 fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (error) => {
-                    if(error) throw error;
-                    else {
                         db.updateOne(Post, {_id: new Object(postID)}, {
                             author: req.session.username, 
                             ...req.body,
@@ -331,7 +329,6 @@ const controller = {
                             }, (error) => {
                             res.redirect('/viewPost?valid=' + postID);
                         });
-                    }
                 });
             });
         }
