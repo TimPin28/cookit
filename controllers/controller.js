@@ -179,7 +179,6 @@ const controller = {
         else if (image.mimetype === 'image/jpeg') { imgtype = '.jpg' }
 
         image.mv(path.join(__dirname, '..', 'public', 'images', 'posts', image.name), (error) => {
-            //if(error) throw error;
             Post.create({
                 author: req.session.username,
                 ...req.body,
@@ -190,8 +189,7 @@ const controller = {
                 const author = post.author;
                 const newfilename = postid + '-' + author + imgtype;
                 fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (error) => {
-                    // if(error) throw error;
-                    post.image = '/images/posts/' + newfilename;
+                    post.image = 'images/posts/' + newfilename;
                     post.save();
                     var string = encodeURIComponent(postid);
                     res.redirect('/viewPost?valid=' + string);
