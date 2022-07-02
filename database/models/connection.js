@@ -11,7 +11,7 @@ const options = {
 const database = {
 
     connect: function () {
-        mongoose.connect( process.env.MONGODB_URI || databaseURL, options, function(error) {
+        mongoose.connect( process.env.MONGODB_URI, options, function(error) {
             if(error) throw error;
             console.log('Connected to: ' + databaseURL);
         });

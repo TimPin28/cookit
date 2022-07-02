@@ -39,7 +39,7 @@ app.use(express.static('public'));
 
 // Sessions
 app.use(session({
-    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI ||'mongodb://localhost:27017/cookitDB' }),
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
     secret: 'randomsecret',
     resave: false,
     saveUninitialized: true,
