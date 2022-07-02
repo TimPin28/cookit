@@ -97,3 +97,7 @@ span.datetime {
 li {
     list-style-type: none;
    }
+
+.recipe-content {
+    white-space: pre-line;
+}

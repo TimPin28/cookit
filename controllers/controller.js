@@ -326,7 +326,10 @@ const controller = {
                     if(error) throw error;
                     else {
                         db.updateOne(Post, {_id: new Object(postID)}, {
-                            author: req.session.username, ...req.body,image: '/images/posts/' + newfilename, comments: null,
+                            author: req.session.username, 
+                            ...req.body,
+                            image: '/images/posts/' + newfilename, 
+                            comments: null,
                             }, (error) => {
                             res.redirect('/viewPost?valid=' + postID);
                         });
