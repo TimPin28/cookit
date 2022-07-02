@@ -274,14 +274,15 @@ const controller = {
         await db.findOne(Post, {_id:passed}, null, async function(post) {
             await db.findMany(Comment, {ogPost:passed}, null, function(comments) {
                 post.comments=comments;
+
+                for (const element of comments){
+                    if(req.session.username === element.author){
+                        element.editable = true;
+                    }
+                }
+
                 if(req.session.username) {
                     if (req.session.username === post.author){
-
-                        for (const element of comments){
-                            if(req.session.username === element.author){
-                                element.editable = true;
-                            }
-                        }
                         res.render('viewPost', {_id: post._id, title: post.title,
                             tags: post.tags, author: post.author, createdAt: post.createdAt,
                             ingredients: post.ingredients, instructions: post.instructions, 
