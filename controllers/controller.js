@@ -179,7 +179,7 @@ const controller = {
         else if (image.mimetype === 'image/jpeg') { imgtype = '.jpg' }
 
         image.mv(path.join(__dirname, '..', 'public', 'images', 'posts', image.name), (error) => {
-            if(error) throw error;
+            //if(error) throw error;
             Post.create({
                 author: req.session.username,
                 ...req.body,
