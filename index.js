@@ -1,3 +1,6 @@
+
+
+
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
@@ -15,10 +18,10 @@ const routes = require('./routes/routes.js');
 
 // create express application
 const app = new express();
-const port = 3000;
+var PORT = process.env.PORT || 3000
 
 // listen to port
-app.listen(port, function() {
+app.listen(PORT, function() {
     console.log("Node Server is Running at Port 3000");
 });
 
