@@ -189,7 +189,7 @@ const controller = {
                 const postid = post._id.toString();
                 const author = post.author;
                 const newfilename = postid + '-' + author + imgtype;
-                fs.rename(uploadPath + '\\' + image.name, uploadPath + '\\' +  newfilename, (error) => {
+                fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (error) => {
                     if(error) throw error;
                     post.image = '/images/posts/' + newfilename;
                     post.save();
@@ -322,7 +322,7 @@ const controller = {
 
             image.mv(path.join(__dirname, '..', 'public', 'images', 'posts', image.name), (err) => {
                 const newfilename = postID + '-' + username + imgtype;
-                fs.rename(uploadPath + '\\' + image.name, uploadPath + '\\' +  newfilename, (error) => {
+                fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (error) => {
                     if(error) throw error;
                     else {
                         db.updateOne(Post, {_id: new Object(postID)}, {
@@ -454,7 +454,7 @@ const controller = {
             image.mv(path.join(__dirname, '..', 'public', 'images', 'pfp', image.name), (err) => {
 
                 const newfilename = username + imgtype;
-                fs.rename(uploadPath + '\\' + image.name, uploadPath + '\\' +  newfilename, (error) => {
+                fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (error) => {
                     if(error) throw error;
                     else {
                         User.update({username: username}, {pfp: '/images/pfp/' + newfilename}, (error) => {
