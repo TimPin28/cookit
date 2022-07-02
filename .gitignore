@@ -2,3 +2,5 @@ node_modules/
 
 !public/images/pfp/default.png
 !public/images/Icon.png
+!public/images/posts
+!public/images/pfp
