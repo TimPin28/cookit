@@ -190,7 +190,7 @@ const controller = {
                 const author = post.author;
                 const newfilename = postid + '-' + author + imgtype;
                 fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (error) => {
-                    if(error) throw error;
+                    // if(error) throw error;
                     post.image = '/images/posts/' + newfilename;
                     post.save();
                     var string = encodeURIComponent(postid);
