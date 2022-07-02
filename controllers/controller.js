@@ -215,7 +215,7 @@ const controller = {
     deletePost: async(req, res) => {
         const user = req.session.username;
         var postID = req.get('referer');
-        postID = postID.replace("http://localhost:3000/viewPost?valid=", "");
+        postID = postID.replace("https://cookit-apdev.herokuapp.com/viewPost?valid=", "");
 
         await Comment.deleteMany({ogPost: postID});
         
@@ -238,7 +238,7 @@ const controller = {
         var ID = req.get('referer');
         var body = req.body.comment_text;
         var username = req.session.username;
-        ID = ID.replace("http://localhost:3000/viewPost?valid=", "");
+        ID = ID.replace("https://cookit-apdev.herokuapp.com/viewPost?valid=", "");
 
         Comment.create({author: username, ogPost: ID, comment_text: body}, (error) => {
             res.redirect('back');
@@ -248,7 +248,7 @@ const controller = {
     editComment: async(req, res) => {
         var postID = req.params._id;
         var ref = req.get('referer');
-        ref = ref.replace("http://localhost:3000/viewPost?valid=", "");
+        ref = ref.replace("https://cookit-apdev.herokuapp.com/viewPost?valid=", "");
 
         Comment.updateOne({_id: new Object(postID)}, {
             author: req.session.username,
@@ -311,7 +311,7 @@ const controller = {
     editPost: async(req, res) => {
         const username = req.session.username;
         var postID = req.get('referer');
-        postID = postID.replace("http://localhost:3000/edit-post-form/", "");
+        postID = postID.replace("https://cookit-apdev.herokuapp.com/edit-post-form/", "");
         if (req.files !== null){    
             const image = req.files.image;
             const uploadPath = path.join(__dirname, '..', 'public', 'images', 'posts');
@@ -350,7 +350,7 @@ const controller = {
 
     editPostForm: async(req,res) => {
         var postID = req.get('referer');
-        postID = postID.replace("http://localhost:3000/viewPost?valid=", "");
+        postID = postID.replace("https://cookit-apdev.herokuapp.com/viewPost?valid=", "");
         Post.findOne({_id: new Object(postID)}, (error, post) => {
             res.render('createedit', post);
         });
