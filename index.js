@@ -1,12 +1,11 @@
-
-
-
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo');
 const fileUpload = require('express-fileupload');
+
+require('dotenv').config();
 
 const mongoose = require('./database/models/connection');
 const Post = require('./database/models/Post');
@@ -40,7 +39,7 @@ app.use(express.static('public'));
 
 // Sessions
 app.use(session({
-    store: MongoStore.create({ mongoUrl: 'mongodb://cookit-apdev.herokuapp.com' }),
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI ||'mongodb://cookit-apdev.herokuapp.com' }),
     secret: 'randomsecret',
     resave: false,
     saveUninitialized: true,
