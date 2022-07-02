@@ -408,12 +408,19 @@ const controller = {
             });
         })
 
+        const test = await Post.find({author: name});
+        for (let i = 0; i < test.length; i++) {
+            var find = test[i]._id.toString();
+            console.log(find);
+            db.deleteMany(Comment, {ogPost: find}, (error) => {
+                
+            });
+        }
+        
         await db.deleteMany(Post, {author: name}, async (error) => {
             User.delete({username: name}, async (error) => {
                 Comment.deleteMany({author: name}, async (error) => {
-                    await Comment.deleteMany({ogPost: postID}, (error) => {
-                        res.redirect('/logout');
-                    });
+                    res.redirect('/logout');
                 });
             });
         });
