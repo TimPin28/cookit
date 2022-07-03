@@ -418,7 +418,7 @@ const controller = {
                 const image = path.join('.', 'public', user.pfp);
                 await fs.unlink(image, (err) => {
                     if(err) {
-                        console.err(err);
+                        console.log(err);
                     }
                 });
             }
@@ -431,7 +431,7 @@ const controller = {
                 const postImage = path.join('.', 'public', posts[i].image);
                 await fs.unlink(postImage, (err) => {
                     if(err) {
-                        console.err(err);
+                        console.log(err);
                     }
                 });
             });
