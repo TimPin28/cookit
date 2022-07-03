@@ -17,13 +17,13 @@
                 <form action = "/edit-post" method="post" enctype="multipart/form-data" onSubmit = "return checkForm()" id="createForm">
                     <div>
                         <br>
-                        <input name = "title" type = "text" value = {{this.title}} id = "title" size = 50>
+                        <input name = "title" type = "text" value = {{post.title}} id = "title" size = 50>
                         <br><br>
-                        <input name = "tags" type = "text" value = {{this.tags}} id = "tags" size = 20>
+                        <input name = "tags" type = "text" value = {{post.tags}} id = "tags" size = 20>
                         <br><br>
-                        <textarea name = "ingredients" form="createForm" id="ingredients" rows="10" cols="100">{{this.ingredients}}</textarea>
+                        <textarea name = "ingredients" form="createForm" id="ingredients" rows="10" cols="100">{{post.ingredients}}</textarea>
                         <br><br>
-                        <textarea name = "instructions" form="createForm" id="instructions" rows="10" cols="100">{{this.instructions}}</textarea>
+                        <textarea name = "instructions" form="createForm" id="instructions" rows="10" cols="100">{{post.instructions}}</textarea>
                         <br><br>
                         <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg" onchange="readURL(this);"/>
                         <br><br>
