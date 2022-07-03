@@ -24,5 +24,5 @@ You can either download the code, or open it using this link: [https://cookit-ap
   ```
 6. Navigate to [http://localhost:3000](http://localhost:3000). This should this display the home page of cookit.
 
-<!-- Navigate to [http://localhost:9090/register](http://localhost:9090/register). You should see the registration page.
-  ![alt text](screens/registration-screen.png "Registration page") -->
+#### Note
+The application will initially be without any entries since your database is not yet populated
