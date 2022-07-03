@@ -298,8 +298,9 @@ const controller = {
     viewPost: async(req,res) => {
         var passed = req.query.valid;
         await db.findOne(Post, {_id:passed}, null, async function(err, post) {
-            if(err) res.redirect('*');
-            await db.findMany(Comment, {ogPost:passed}, null, function(comments) {
+            
+            await db.findMany(Comment, {ogPost:passed}, null, function(err, comments) {
+                if(err) res.redirect('*');
                 post.comments=comments;
 
                 for (const element of comments){
