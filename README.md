@@ -23,6 +23,7 @@ You can either download the code, or open it using this link: [https://cookit-ap
   node index.js
   ```
 6. Navigate to [http://localhost:3000](http://localhost:3000). This should this display the home page of cookit.
+![alt text](screens/homepage.png "Home page")
 
 #### Note
-The application will initially be without any entries since your database is not yet populated
+The application will initially be without any entries since your database is not yet populated.
