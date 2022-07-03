@@ -2,7 +2,7 @@
 
 This website is a repository of recipes that have been made by our users!
 
-You can either download the code, or open it using this link: [https://cookit-apdev.herokuapp.com]
+You can either download the code, or open it using this link: [https://cookit-apdev.herokuapp.com](https://cookit-apdev.herokuapp.com)
 
 ## Local setup
 1. Fork this repository to create a copy on your GitHub account.
@@ -22,7 +22,7 @@ You can either download the code, or open it using this link: [https://cookit-ap
   ```shell
   node index.js
   ```
-6. Navigate to [http://localhost:3000]. This should this display the home page of cookit.
+6. Navigate to [http://localhost:3000] (http://localhost:3000). This should this display the home page of cookit.
 
 <!-- Navigate to [http://localhost:9090/register](http://localhost:9090/register). You should see the registration page.
   ![alt text](screens/registration-screen.png "Registration page") -->
