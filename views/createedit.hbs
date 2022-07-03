@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Create a Dish</title>
+        <script src = "/js/createedit.js"></script>
+        <script src = "/js/jquery-2.1.1.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/balloon/ckeditor.js"></script>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/create.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/universal_styles.css">
+    </head>
+
+    <body>
+
+        {{> header}}
+        
+        <div id="content">
+            <div id="left">
+                <form action = "/edit-post" method="post" enctype="multipart/form-data" onSubmit = "return checkForm()" id="createForm">
+                    <div>
+                        <h1>Editing {{post.title}}</h1>
+                        <br>
+                        <h3>Title</h3>
+                        <input name = "title" type = "text" value = {{post.title}} id = "title" size = 50>
+                        <br><br>
+                        <h3>Tags</h3>
+                        <input name = "tags" type = "text" value = {{post.tags}} id = "tags" size = 20>
+                        <br><br>
+                        <h3>Ingredients</h3>
+                        <textarea name = "ingredients" form="createForm" id="ingredients" rows="10" cols="100">{{post.ingredients}}</textarea>
+                        <br><br>
+                        <h3>Instructions</h3>
+                        <textarea name = "instructions" form="createForm" id="instructions" rows="10" cols="100">{{post.instructions}}</textarea>
+                        <br><br>
+                        <h3>If you don't want to change the image, leave this as default!</h3>
+                        <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg" onchange="readURL(this);"/>
+                        <br><br>
+                        <input type = submit id="button" value = "Edit">
+                    </div>
+                </form>
+            </div>
+            <div id="right">
+                <img id = "foodimg" src = "#" alt = "Your Image"/>
+            </div>
+        </div>
+
+    </body>
+</html>

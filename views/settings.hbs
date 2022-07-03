@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Settings</title>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/settings.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/universal_styles.css">
+    </head>
+
+    <body>
+
+        {{> header}}
+
+        <br><br><br>
+
+        <h1>General Account Settings</h1>
+
+        <br><br>
+
+        <hr>
+
+        <br><br>
+
+        <table>
+            <tr>
+                {{>messages}}
+                <td><h2>Change Password</h2></td>
+                <td><form id="change-password-form" action="/change-pass" method="POST">
+                    <input type="password" name = "oldpass" placeholder="Old Password"> <br>
+                    <input type="password" name = "newpass" placeholder="New Password"> <br>
+                    <input type="password" name = "cnewpass" placeholder="Confirm New Password"> <br>
+                    <input type = submit id="button" value = "Change Password">
+                </form></td>
+            </tr>
+            <tr>
+                <td><h2>Change Profile Picture</h2></td>
+                <td><form id="change-profile-picture-form" action="/changepfp" enctype="multipart/form-data" method="POST">
+                    <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg"/> <br>
+                    <input type = submit id="button" value = "Save Profile Picture"> <br>
+                </form></td>
+            </tr>
+            <tr>
+                <td><h2>Delete Account</h2></td>
+                <td><h3>Are you sure you want to delete your account?</h3> <br>
+                <h3>Everything related to your account will be deleted!</h3> <br>
+                <form action = "/deleteUser" id="createForm">
+                    <input type = submit id="deletebutton" value = "Delete Account">
+                </form></td>
+            </tr>
+        </table>
+
+
+        {{!-- <button type="button" class="collapsible"><h2>Change Password</h2></button>
+            <div class="content">
+                <form id="change-password-form" action="/changepass" method="POST">
+                    <input type="password" name = "old" placeholder="Old Password">
+                    <input type="password" name = "new" placeholder="New Password">
+                    <input type="password" name = "cnew" placeholder="Confirm New Password">
+                    <input type = submit id="button" value = "Change Password">
+                </form>
+            </div>
+
+        <br><br>
+
+        <button type="button" class="collapsible"><h2>Change Profile Picture</h2></button>
+            <div class="content">
+                <form id="change-profile-picture-form" action="/changepfp" method="POST">
+                    <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg"/>
+                    <input type = submit id="button" value = "Save Profile Picture">
+                </form>
+            </div>
+        
+        <br><br>
+        
+        <button type="button" class="collapsible"><h2>Delete Account</h2></button>
+            <div class="content">
+                <h3>Are you sure you want to delete your account?</h3>
+                <h3>Everything related to your account will be deleted!</h3>
+                <form action = "/deleteUser" id="createForm">
+                    <input type = submit id="deletebutton" value = "Delete Account">
+                </form>
+            </div> --}}
+
+    </body>
+</html>

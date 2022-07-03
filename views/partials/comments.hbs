@@ -1,0 +1,18 @@
+<li class="commentbox">
+    <a href="/profile/{{author}}"><h2 class="commenter">{{author}}<span class="datetime">{{updatedAt}}</span></h2></a>
+    <p class="comment">{{comment_text}}</p>
+
+    {{#if editable}}
+    <a class="show editbutton">Edit</a>
+    <a href="/delete-comment/{{_id}}" id = "commentdelete" class = "deletebutton">Delete</a>
+    {{/if}}
+
+    <div class="center hideform">
+        <button class="close" style="float: right;">X</button> 
+        <h2 id = "headerEdit">Edit comment:</h2>
+        <form action="/edit-comment/{{_id}}" method="post" id="editcomment-{{_id}}"></form>
+            <textarea form="editcomment-{{_id}}" name="comment_text" id="editcommentbox" rows="8" cols="75">{{comment_text}}</textarea>
+            <br>
+            <input form="editcomment-{{_id}}" type = submit id="button" value = "Edit Comment"> 
+    </div>
+</li>

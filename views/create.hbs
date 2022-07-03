@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Create a Dish</title>
+        <script src = "/js/create.js"></script>
+        <script src = "/js/jquery-2.1.1.js"></script>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/create.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/universal_styles.css">
+    </head>
+
+    <body>
+
+        {{> header}}
+        
+        <div id="content">
+            <div id="left">
+                <h1> Create Post </h1>
+                <form action = "/submit-post" method="post" enctype="multipart/form-data" onSubmit = "return checkForm()" id="createForm">
+                    <div>
+                        <br>
+                        <h3>Title</h3>
+                        <input name = "title" type = "text"  placeholder = "Recipe Title" id = "title" size = 50>
+                        <br><br>
+                        <h3>Tags</h3>
+                        <input name = "tags" type = "text" placeholder = "Tags" id = "tags" size = 20>
+                        <br><br>
+                        <h3>Ingredients</h3>
+                        <textarea name = "ingredients" form="createForm" placeholder = "Ingredients" id="ingredients" rows="10" cols="100"></textarea>
+                        <br><br>
+                        <h3>Instructions</h3>
+                        <textarea name = "instructions" form="createForm" placeholder = "Instructions" id="instructions" rows="10" cols="100"></textarea>
+                        <br><br>
+                        <h3>Image</h3>
+                        <input name = "image" id = "image" type = "file" accept = "image/png, image/jpeg" onchange="readURL(this);"/>
+                        <br><br>
+                        <input type = submit id="button" value = "Create">
+                    </div>
+                </form>
+            </div>
+            <div id="right">
+                <img id = "foodimg" src = "#" alt = "Your Image"/>
+            </div>
+        </div>
+
+    </body>
+</html>

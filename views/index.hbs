@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Home</title>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/universal_styles.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/home_page_style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+
+        {{> header}}
+
+        <div class="content">
+            <div class="dropdown">
+                <button class="dropbtn">Sort</button>
+                <div class="dropdown-content">
+                <a href="/alpbt"><p>Alphabetical</p></a>
+                <a href="/"><p href="/">Date</p></a>
+                </div>
+            </div>
+
+            {{#each posts}}
+            <div class="post"><a href="/viewPost?valid={{this._id}}">
+                <div class=food-thumbnail>
+                    <img src = '../{{this.image}}'>
+                </div>
+                <div class="post-details">
+                    <div class="title">
+                        <h2>{{this.title}}</h2>
+                    </div>            
+                    <div class="user">{{this.author}}</div> 
+                    <div class="tags">Tags: {{this.tags}}</div>
+                    <div class="date">{{this.createdAt}}</div>
+                </div>
+            </a></div>
+            {{/each}}
+
+        </div>
+    </body>
+</html>

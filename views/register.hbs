@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Register</title>
+        <script src = "js/Register.js"></script>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/loginregisterforms.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/messages.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/universal_styles.css">
+    </head>
+
+    <body>
+        <div class="form-container">
+            <a href="/"><img id="logo" src="images/Icon.png" /></a>
+            <form id="register-form" action ="/register" method="POST">
+                <div>
+                    <input type="text" placeholder="Username" id ="username" class="form-input" name="username">
+                    <input type="email" placeholder ="Email" id="email" class="form-input" name="email">
+                    <input type="password" placeholder="Password" id="password" class="form-input" name="password">
+                    <input type="password" placeholder="Confirm Password" id="confirm-password" class="form-input" name="confirm-password">
+                    <input type="submit" id="button" value="Register">
+                    {{>messages}}
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

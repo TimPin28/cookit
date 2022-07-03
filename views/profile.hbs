@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>{{username}}'s Profile</title>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/universal_styles.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/profile.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+
+        {{> header}}
+
+        <div id="content">
+            <div id="leftMain">
+                <br><br><br>
+                <img src="{{pfp}}" id="profpic"/>
+                <br><br><br><br>
+                <h2>{{username}}</h2> <br>
+                <h4>Date Joined: {{joindate}}</h4> <br><br>
+            </div>
+
+            <div id="rightMain">
+                <div class="dropdown">
+                    <button class="dropbtn">Sort</button>
+                    <div class="dropdown-content">
+                    <a href="/profile/{{username}}/alpbt"><p>Alphabetical</p></a>
+                    <a href="/profile/{{username}}"><p>Date</p></a>
+                    </div>
+                </div>
+
+                <br><br>
+
+                {{#each posts}}
+                <div class="post"><a href="/viewPost?valid={{this._id}}">
+                    <div class=food-thumbnail>
+                        <img src = '../../{{this.image}}'>
+                    </div>
+                    <div class="post-details">
+                        <div class="title">
+                            <h2>{{this.title}}</h2>
+                        </div> 
+                        <div class="user">{{this.author}}</div>            
+                        <div class="tags">Tags: {{this.tags}}</div>
+                        <div class="date">{{this.createdAt}}</div>
+                    </div>
+                </a></div>
+                {{/each}}
+
+            </div>
+        </div>
+    </body>
+</html>     

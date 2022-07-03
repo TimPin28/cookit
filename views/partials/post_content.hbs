@@ -1,0 +1,42 @@
+<div id="content">
+    <div id="left">
+        <h1>{{post.title}}</h1>
+
+        {{#if isauthor}}
+        <a href="/edit-post-form/{{post._id}}" id = "postedit" > Edit</a>
+        <a href="/delete-post" id = "postdelete" >Delete</a>
+        {{/if}}
+        <a href="/profile/{{post.author}}" id="postauthor"><h3>by {{post.author}}</h3></a>
+        <h3 class="tags">Tags: {{post.tags}}</h3>
+        
+        <h5 class="datetime">{{post.updatedAt}}</h5>
+        
+        <br>
+
+        <h2>Ingredients</h2>
+        <div class="recipe-content">
+             {{post.ingredients}}
+        </div>
+
+        <br><br>
+
+        <h2>Instructions</h2>
+        <div class="recipe-content">
+            {{post.instructions}}
+        </div>
+
+        </div>
+
+        <div id="right">
+        <img src="../{{post.image}}"/>
+        </div>
+</div>
+
+<form action = "/comment-post" method="post" onSubmit = "" id="createcomment">
+    <div>
+        <textarea form="createcomment" name="comment_text" placeholder = "Create Comment" id="createcommentbox" rows="8" cols="75"></textarea>
+        <br><br>
+        <input type = submit id="button" value = "Submit Comment">
+    </div>
+</form>
+

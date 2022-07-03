@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/universal_styles.css">
+        <link rel = "stylesheet" type = "text/css" media = "all" href = "/css/post.css">
+
+        <script src = "/js/jquery-2.1.1.js"></script>
+        <script src = "/js/comments.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        
+        {{> header}}
+
+        {{> post_content _id=_id title=title tags=tags author=author ingredients=ingredients instructions=instructions image=image}}
+        
+        <div id="bottom">
+          <div>
+                {{#each post.comments}} 
+                    
+                    {{> comments }} 
+                
+                {{/each}}
+          </div>
+        </div>
+        
+    </body>
+</html> 
