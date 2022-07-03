@@ -146,7 +146,7 @@ const controller = {
                 });
               } else {
                 // No user found
-                req.flash('error_msg', 'No registered user with that email. Please register.');
+                req.flash('error_msg', 'No registered user with that username. Please register.');
                 res.redirect('/register');
               }
             }
