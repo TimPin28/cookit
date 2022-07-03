@@ -318,6 +318,7 @@ const controller = {
 
     editPost: async(req, res) => {
         const username = req.session.username;
+        console.log('in editPost!');
         var postID = req.get('referer');
         postID = postID.replace("https://cookit-apdev.herokuapp.com/edit-post-form/", "");
         if (req.files !== null){    
