@@ -7,11 +7,12 @@ const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
 const fs = require('fs');
 
+let URI;
 if (process.env.PORT){
-    const URI = 'https://cookit-apdev.herokuapp.com';
+    URI = 'https://cookit-apdev.herokuapp.com';
 }
 else {
-    const URI = 'http://localhost:3000';
+    URI = 'http://localhost:3000';
 }
 
 
@@ -225,10 +226,10 @@ const controller = {
         await Comment.deleteMany({ogPost: postID});
 
         Post.findOne({_id: new Object(postID)}, async(error, post) => {
-            var image = "./public"+post.image;
+            var image = "./public/"+post.image;
             await fs.unlink(image, (error) => {
                 if(error) {
-                    console.error(err);
+                    console.error(error);
                 }
             });
         })
@@ -305,7 +306,6 @@ const controller = {
 
     editPost: async(req, res) => {
         const username = req.session.username;
-        console.log('in editPost!');
         var postID = req.get('referer');
         postID = postID.replace(URI + "/edit-post-form/", "");
         if (req.files !== null){    
