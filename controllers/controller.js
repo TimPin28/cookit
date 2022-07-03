@@ -226,7 +226,7 @@ const controller = {
         await Comment.deleteMany({ogPost: postID});
 
         Post.findOne({_id: new Object(postID)}, async(error, post) => {
-            var image = "./public/"+post.image;
+            const image = path.join('.', 'public', post.image);
             await fs.unlink(image, (error) => {
                 if(error) {
                     console.error(error);
