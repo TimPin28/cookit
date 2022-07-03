@@ -1,8 +1,17 @@
-# cookit, Recipes made easy!
+# cookit, recipes made easy!
 
-This website is a repository of recipes that have been made by our users!
+cookit is a recipe-sharing site where anyone can share their dishes no matter what cuisine!
 
 You can either download the code, or open it using this link: [https://cookit-apdev.herokuapp.com](https://cookit-apdev.herokuapp.com)
+
+
+# Features
+* **Register & Log in** - Before being able to create, share, and comment on recipes, create your own account and login!
+* **Create & Edit Recipe Posts** - Share your recipes on the site! Put in the ingredients, instructions, and upload a photo of your dish.
+* **Create & Edit Comments on Posts** - Want to tell someone how delicious their recipe is? Comment on their post!
+* **View All Recipes** - Can't decide on what to cook? View all the recipes on the site in one page.
+* **Search Recipes or Tags** - Want to search for a pork dish, or a Japanese dish? Use the search bar to search for recipes and tags!
+* **Delete Posts, Comments, and your Account** - Have control over your data. Delete your posts, comments, and even your account.
 
 ## Software Dependencies
 * Any text editor
@@ -16,7 +25,7 @@ You can either download the code, or open it using this link: [https://cookit-ap
   ```shell
   git clone https://github.com/TimPin28/cookit
   ```
-2. Navigate to the directory where forked the local copy of APDEV.
+2. Navigate to the directory where forked the local copy of cookit.
   ```shell
   cd cookit
   ```
