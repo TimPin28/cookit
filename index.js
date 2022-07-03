@@ -18,6 +18,7 @@ const routes = require('./routes/routes.js');
 // create express application
 const app = new express();
 var PORT = process.env.PORT || 3000
+var URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/cookitDB'
 
 // listen to port
 app.listen(PORT, function() {
@@ -39,7 +40,7 @@ app.use(express.static('public'));
 
 // Sessions
 app.use(session({
-    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
+    store: MongoStore.create({ mongoUrl: URI }),
     secret: 'randomsecret',
     resave: false,
     saveUninitialized: true,
