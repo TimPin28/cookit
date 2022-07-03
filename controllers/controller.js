@@ -389,7 +389,7 @@ const controller = {
         const name = req.session.username;
 
         User.getOne({username: name}, async (err, user) => {
-            var image = "./public"+user.pfp;
+            const image = path.join('.', 'public', user.pfp);
             await fs.unlink(image, (error) => {
                 if(error) {
                     console.error(err);
