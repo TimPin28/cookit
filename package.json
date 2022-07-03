@@ -9,17 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TimPin28/APDEV.git"
+    "url": "git+https://github.com/TimPin28/cookit.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TimPin28/APDEV/issues"
+    "url": "https://github.com/TimPin28/cookit/issues"
   },
-  "homepage": "https://github.com/TimPin28/APDEV#readme",
+  "homepage": "https://github.com/TimPin28/cookit#readme",
   "dependencies": {
-    "@ckeditor/ckeditor5-build-balloon": "^34.1.0",
     "bcrypt": "^5.0.1",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
