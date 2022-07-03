@@ -361,7 +361,7 @@ const controller = {
             const test = post.title;
             console.log(test);
             if (req.session.username) {
-                res.render('createedit', {title: post.title, tags: post.tags, ingredients: post.ingredients, instructions: post.instructions,
+                await res.render('createedit', {title: post.title, tags: post.tags, ingredients: post.ingredients, instructions: post.instructions,
                      loggedin: true, loggeduser: req.session.username});
             }
             else {
