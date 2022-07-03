@@ -284,12 +284,7 @@ const controller = {
                         res.render('viewPost', {post, loggedin: true, loggeduser: req.session.username, isauthor: true});
                     }
                     else {
-                        if (req.session.username === comments.author){
-                            res.render('viewPost', {post, loggedin: true, loggeduser: req.session.username, isauthorofcomment: true});
-                        }
-                        else {
-                            res.render('viewPost', {post, loggedin: true, loggeduser: req.session.username});
-                        }
+                        res.render('viewPost', {post, loggedin: true, loggeduser: req.session.username});
                     }
 
                 }
