@@ -281,35 +281,20 @@ const controller = {
                 
                 if(req.session.username) {
                     if (req.session.username === post.author){
-                        res.render('viewPost', {_id: post._id, title: post.title,
-                            tags: post.tags, author: post.author, createdAt: post.createdAt,
-                            ingredients: post.ingredients, instructions: post.instructions, 
-                            image: post.image, comments: post.comments,
-                            loggedin: true, loggeduser: req.session.username, isauthor: true});
+                        res.render('viewPost', {post, loggedin: true, loggeduser: req.session.username, isauthor: true});
                     }
                     else {
                         if (req.session.username === comments.author){
-                            res.render('viewPost', {_id: post._id, title: post.title,
-                                tags: post.tags, author: post.author, createdAt: post.createdAt,
-                                ingredients: post.ingredients, instructions: post.instructions, 
-                                image: post.image, comments: post.comments,
-                                loggedin: true, loggeduser: req.session.username, isauthorofcomment: true});
+                            res.render('viewPost', {post, loggedin: true, loggeduser: req.session.username, isauthorofcomment: true});
                         }
                         else {
-                            res.render('viewPost', {_id: post._id, title: post.title,
-                                tags: post.tags, author: post.author, createdAt: post.createdAt,
-                                ingredients: post.ingredients, instructions: post.instructions, 
-                                image: post.image, comments: post.comments,
-                                loggedin: true, loggeduser: req.session.username});
+                            res.render('viewPost', {post, loggedin: true, loggeduser: req.session.username});
                         }
                     }
 
                 }
                 else {
-                    res.render('viewPost', {_id: post._id, title: post.title,
-                        tags: post.tags, author: post.author, createdAt: post.createdAt,
-                        ingredients: post.ingredients, instructions: post.instructions, 
-                        image: post.image, comments: post.comments});
+                    res.render('viewPost', {post});
                 }
             });
             
@@ -358,8 +343,6 @@ const controller = {
         var postID = req.get('referer');
         postID = postID.replace("https://cookit-apdev.herokuapp.com/viewPost?valid=", "");
         Post.findOne({_id: new Object(postID)}, (error, post) => {
-            // const test = post.title;
-            // console.log(test);
             if (req.session.username) {
                 res.render('createedit', {post, loggedin: true, loggeduser: req.session.username});
             }
