@@ -358,8 +358,8 @@ const controller = {
         var postID = req.get('referer');
         postID = postID.replace("https://cookit-apdev.herokuapp.com/viewPost?valid=", "");
         Post.findOne({_id: new Object(postID)}, (error, post) => {
-            const test = post.title;
-            console.log(test);
+            // const test = post.title;
+            // console.log(test);
             if (req.session.username) {
                 res.render('createedit', {post, loggedin: true, loggeduser: req.session.username});
             }
