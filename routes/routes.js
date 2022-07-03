@@ -10,6 +10,7 @@ router.get('/alpbt', controller.getAlpbt);
 
 router.get('/create', isPrivate, controller.getCreate);
 router.get('/settings', isPrivate, controller.getSettings);
+router.get('/about', controller.getAbout);
 router.get('/login', isPublic, controller.getLogin);
 router.get('/register', isPublic, controller.getRegister);
 router.get('/profile/:username', controller.getProfile);

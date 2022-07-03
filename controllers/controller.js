@@ -57,6 +57,10 @@ const controller = {
         }
     },
 
+    getAbout: function(req, res) {
+        res.render('about');
+    },
+
     getProfile: function(req, res) {
         if(req.session.username){
             res.render('profile', {loggedin: true, loggeduser: req.session.username});
