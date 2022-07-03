@@ -2,24 +2,23 @@
     <div id="left">
         <h1>{{post.title}}</h1>
 
-        {{!-- Add css for both! --}}
         {{#if isauthor}}
-        <a href="/delete-post"><h2>delete</h2></a>
-        <a href="/edit-post-form/{{post._id}}"><h2>edit</h2></a>
+        <a href="/edit-post-form/{{post._id}}" id = "postedit" > Edit</a>
+        <a href="/delete-post" id = "postdelete" >Delete</a>
         {{/if}}
-
-        <h3 class="tags">{{post.tags}}</h3>
-        <a href="/profile/{{post.author}}"><h3>{{post.author}}</h3></a>
-        <h3 class="datetime">{{post.createdAt}}</h3>
+        <a href="/profile/{{post.author}}" id="postauthor"><h3>by {{post.author}}</h3></a>
+        <h3 class="tags">Tags: {{post.tags}}</h3>
         
-        <br><br><br>
+        <h5 class="datetime">{{post.updatedAt}}</h5>
+        
+        <br>
 
         <h2>Ingredients</h2>
         <div class="recipe-content">
              {{post.ingredients}}
         </div>
 
-        <br><br><br>
+        <br><br>
 
         <h2>Instructions</h2>
         <div class="recipe-content">

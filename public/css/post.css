@@ -101,3 +101,44 @@ li {
 .recipe-content {
     white-space: pre-line;
 }
+
+#postauthor {
+    color: rgb(0, 106, 133);
+}
+
+#postauthor:hover {
+    color: rgb(0, 139, 173);
+}
+
+
+/* edit and delete buttons for post and comments */
+
+.deletebutton:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.editbutton:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#postedit {
+    color: rgb(29, 156, 29);
+    font-size: 14px;
+}
+
+#postdelete {
+    color: rgb(175, 0, 0);
+    font-size: 14px;
+}
+
+#commentdelete {
+    color: rgb(175, 0, 0);
+    font-size: 12px;
+}
+
+.show {
+    color: rgb(29, 156, 29);
+    font-size: 12px;
+}

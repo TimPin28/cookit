@@ -10,13 +10,13 @@
 
         {{> header}}
 
-        <div id="conent">
+        <div id="content">
             <div id="leftMain">
                 <br><br><br>
                 <img src="{{pfp}}" id="profpic"/>
                 <br><br><br><br>
-                <h2>{{username}}</h2> <br><br>
-                <h3>{{joindate}}</h3> <br><br>
+                <h2>{{username}}</h2> <br>
+                <h4>Date Joined: {{joindate}}</h4> <br><br>
             </div>
 
             <div id="rightMain">
@@ -38,10 +38,9 @@
                     <div class="post-details">
                         <div class="title">
                             <h2>{{this.title}}</h2>
-                        </div>             
-                        <div class="tags">{{this.tags}}</div>
-                        <div class="user">{{this.author}}</div>
-
+                        </div> 
+                        <div class="user">{{this.author}}</div>            
+                        <div class="tags">Tags: {{this.tags}}</div>
                         <div class="date">{{this.createdAt}}</div>
                     </div>
                 </a></div>

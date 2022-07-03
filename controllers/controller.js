@@ -387,14 +387,20 @@ const controller = {
 
     deleteUser: async (req, res) => {
         const name = req.session.username;
+        let hasDefaultPfp = false;
 
         User.getOne({username: name}, async (err, user) => {
-            const image = path.join('.', 'public', user.pfp);
-            await fs.unlink(image, (err) => {
-                if(err) {
-                    console.err(err);
-                }
-            });
+            if (user.pfp == path.join('.', 'public', 'images', 'pfp', 'default.png')) {
+                hasDefaultPfp = true;
+            }
+            if (hasDefaultPfp == false) {
+                const image = path.join('.', 'public', user.pfp);
+                await fs.unlink(image, (err) => {
+                    if(err) {
+                        console.err(err);
+                    }
+                });
+            }
         })
 
         const posts = await Post.find({author: name});
