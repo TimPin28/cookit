@@ -400,8 +400,13 @@ const controller = {
         const posts = await Post.find({author: name});
         for (let i = 0; i < posts.length; i++) {
             var find = posts[i]._id.toString();
-            db.deleteMany(Comment, {ogPost: find}, (error) => {
-                
+            db.deleteMany(Comment, {ogPost: find}, async (error) => {
+                const postImage = path.join('.', 'public', posts[i].image);
+                await fs.unlink(postImage, (error) => {
+                    if(error) {
+                        console.error(err);
+                    }
+                });
             });
         }
 
