@@ -229,7 +229,7 @@ const controller = {
             const image = path.join('.', 'public', post.image);
             await fs.unlink(image, (err) => {
                 if(err) {
-                    console.err(err);
+                    console.log(err);
                 }
             });
         })
