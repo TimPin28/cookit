@@ -390,10 +390,10 @@ const controller = {
         let hasDefaultPfp = false;
 
         User.getOne({username: name}, async (err, user) => {
-            if (user.pfp == path.join('.', 'public', 'images', 'pfp', 'default.png')) {
+            if (user.pfp === '/images/pfp/default.png') {
                 hasDefaultPfp = true;
             }
-            if (hasDefaultPfp == false) {
+            if (hasDefaultPfp === false) {
                 const image = path.join('.', 'public', user.pfp);
                 await fs.unlink(image, (err) => {
                     if(err) {
