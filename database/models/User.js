@@ -41,5 +41,3 @@ exports.update = function(filter, update, next) {
       next(error, user);
     });
 }
-
-//module.exports = User;
