@@ -5,7 +5,7 @@ cookit is a recipe-sharing site where anyone can share their dishes no matter wh
 You can either download the code, or open it using this link: [https://cookit-apdev.herokuapp.com](https://cookit-apdev.herokuapp.com)
 
 
-# Features
+## Features
 * **Register & Log in** - Before being able to create, share, and comment on recipes, create your own account and login!
 * **Create & Edit Recipe Posts** - Share your recipes on the site! Put in the ingredients, instructions, and upload a photo of your dish.
 * **Create & Edit Comments on Posts** - Want to tell someone how delicious their recipe is? Comment on their post!
