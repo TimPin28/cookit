@@ -58,7 +58,13 @@ const controller = {
     },
 
     getAbout: function(req, res) {
-        res.render('about');
+        if (req.session.username){
+            res.render('about', {loggeduser: true, loggedin: req.session.username});
+        }
+        else {
+            res.render('about');
+        }
+
     },
 
     getProfile: function(req, res) {
@@ -76,6 +82,16 @@ const controller = {
 
     getRegister: function(req, res) {
         res.render('register');
+    },
+
+    get404: function(req, res) {
+        if (req.session.username){
+            res.status(404).render('404', {loggedin: true, loggeduser: req.session.username});
+        }
+        else{
+            res.status(404).render('404');
+        }
+
     },
 
     registerUser: (req, res) => {

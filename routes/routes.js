@@ -36,8 +36,6 @@ router.get('/delete-post', controller.deletePost)
 router.get('/deleteUser', controller.deleteUser);
 router.post('/changepfp', controller.changepfp)
 
-router.get('*', function(req, res){
-    res.status(404).render('404');
-  });
+router.get('*', controller.get404);
 
 module.exports = router;
