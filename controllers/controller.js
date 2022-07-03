@@ -129,7 +129,7 @@ const controller = {
 
         User.getOne({ username: username }, (err, user) => {
             if (err) {
-              // Database error occurred...
+              // Database err occurred...
               req.flash('error_msg', 'Something happened! Please try again.');
               res.redirect('/login');
             } else {
@@ -186,17 +186,17 @@ const controller = {
         if(image.mimetype === 'image/png') { imgtype = '.png' }
         else if (image.mimetype === 'image/jpeg') { imgtype = '.jpg' }
 
-        image.mv(path.join(__dirname, '..', 'public', 'images', 'posts', image.name), (error) => {
+        image.mv(path.join(__dirname, '..', 'public', 'images', 'posts', image.name), (err) => {
             Post.create({
                 author: req.session.username,
                 ...req.body,
                 comments: null,
                 image: ''
-            }, (error, post) => {
+            }, (err, post) => {
                 const postid = post._id.toString();
                 const author = post.author;
                 const newfilename = postid + '-' + author + imgtype;
-                fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (error) => {
+                fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (err) => {
                     post.image = 'images/posts/' + newfilename;
                     post.save();
                     var string = encodeURIComponent(postid);
@@ -225,16 +225,16 @@ const controller = {
 
         await Comment.deleteMany({ogPost: postID});
 
-        Post.findOne({_id: new Object(postID)}, async(error, post) => {
+        Post.findOne({_id: new Object(postID)}, async(err, post) => {
             const image = path.join('.', 'public', post.image);
-            await fs.unlink(image, (error) => {
-                if(error) {
-                    console.error(error);
+            await fs.unlink(image, (err) => {
+                if(err) {
+                    console.err(err);
                 }
             });
         })
         
-        Post.deleteOne({author: user, _id: new Object(postID) }, (error) => {
+        Post.deleteOne({author: user, _id: new Object(postID) }, (err) => {
             res.redirect('/');
         });
     },
@@ -243,7 +243,7 @@ const controller = {
         const user = req.session.username;
         var postID = req.params._id;        
         
-        Comment.deleteOne({_id: new Object(postID)}, (error) => {
+        Comment.deleteOne({_id: new Object(postID)}, (err) => {
             res.redirect('back');
         });
 
@@ -255,7 +255,7 @@ const controller = {
         var username = req.session.username;
         ID = ID.replace(URI + "/viewPost?valid=", "");
 
-        Comment.create({author: username, ogPost: ID, comment_text: body}, (error) => {
+        Comment.create({author: username, ogPost: ID, comment_text: body}, (err) => {
             res.redirect('back');
         })
     },
@@ -269,7 +269,7 @@ const controller = {
             author: req.session.username,
             ogPost: ref,
             comment_text: req.body.comment_text
-        }, (error) =>{
+        }, (err) =>{
             res.redirect('back');
         })
 
@@ -318,13 +318,13 @@ const controller = {
 
             image.mv(path.join(__dirname, '..', 'public', 'images', 'posts', image.name), (err) => {
                 const newfilename = postID + '-' + username + imgtype;
-                fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (error) => {
+                fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (err) => {
                         db.updateOne(Post, {_id: new Object(postID)}, {
                             author: req.session.username, 
                             ...req.body,
                             image: '/images/posts/' + newfilename, 
                             comments: null,
-                            }, (error) => {
+                            }, (err) => {
                             res.redirect('/viewPost?valid=' + postID);
                         });
                 });
@@ -334,7 +334,7 @@ const controller = {
             const post = Post.findOne({_id: new Object(postID)})
             db.updateOne(Post, {_id: new Object(postID)}, {
                 author: req.session.username, ...req.body,image: post.image, comments: null,
-                }, (error) => {
+                }, (err) => {
                 res.redirect('/viewPost?valid=' + postID);
             });
         }
@@ -344,7 +344,7 @@ const controller = {
     editPostForm: async(req,res) => {
         var postID = req.get('referer');
         postID = postID.replace(URI + "/viewPost?valid=", "");
-        Post.findOne({_id: new Object(postID)}, (error, post) => {
+        Post.findOne({_id: new Object(postID)}, (err, post) => {
             if (req.session.username) {
                 res.render('createedit', {post, loggedin: true, loggeduser: req.session.username});
             }
@@ -390,9 +390,9 @@ const controller = {
 
         User.getOne({username: name}, async (err, user) => {
             const image = path.join('.', 'public', user.pfp);
-            await fs.unlink(image, (error) => {
-                if(error) {
-                    console.error(err);
+            await fs.unlink(image, (err) => {
+                if(err) {
+                    console.err(err);
                 }
             });
         })
@@ -400,19 +400,19 @@ const controller = {
         const posts = await Post.find({author: name});
         for (let i = 0; i < posts.length; i++) {
             var find = posts[i]._id.toString();
-            db.deleteMany(Comment, {ogPost: find}, async (error) => {
+            db.deleteMany(Comment, {ogPost: find}, async (err) => {
                 const postImage = path.join('.', 'public', posts[i].image);
-                await fs.unlink(postImage, (error) => {
-                    if(error) {
-                        console.error(error);
+                await fs.unlink(postImage, (err) => {
+                    if(err) {
+                        console.err(err);
                     }
                 });
             });
         }
 
-        await db.deleteMany(Post, {author: name}, async (error) => {
-            User.delete({username: name}, async (error) => {
-                Comment.deleteMany({author: name}, (error) => {
+        await db.deleteMany(Post, {author: name}, async (err) => {
+            User.delete({username: name}, async (err) => {
+                Comment.deleteMany({author: name}, (err) => {
                     res.redirect('/logout');
                 });
             });
@@ -475,10 +475,10 @@ const controller = {
             image.mv(path.join(__dirname, '..', 'public', 'images', 'pfp', image.name), (err) => {
 
                 const newfilename = username + imgtype;
-                fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (error) => {
-                    if(error) throw error;
+                fs.rename(uploadPath + '/' + image.name, uploadPath + '/' +  newfilename, (err) => {
+                    if(err) throw err;
                     else {
-                        User.update({username: username}, {pfp: '/images/pfp/' + newfilename}, (error) => {
+                        User.update({username: username}, {pfp: '/images/pfp/' + newfilename}, (err) => {
                             req.flash('success_msg', 'Successfully changed profile picture!');
                             res.redirect('/settings');
                         });
