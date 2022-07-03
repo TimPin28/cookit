@@ -404,7 +404,7 @@ const controller = {
                 const postImage = path.join('.', 'public', posts[i].image);
                 await fs.unlink(postImage, (error) => {
                     if(error) {
-                        console.error(err);
+                        console.error(error);
                     }
                 });
             });
