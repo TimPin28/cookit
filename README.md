@@ -58,7 +58,7 @@ Here, you'll see all the recipes currently posted on the site. You can use the s
 ![alt text](screens/homeposts.PNG "Home page")
 
 By default, all posts are sorted by how recently they were added. If you want to sort by alphabetical order, hover over sort and click on "Alphabetical".<br />
-![alt text](screens/sort.PNG "Sort")
+![alt text](screens/sort.png "Sort")
 
 ### Creating a recipe post
 Enter a title for your recipe post, some tags (i.e. what cuisine it is, what kind of ingredients are in it, etc.), the ingredients, instructions, and an image of your dish. Press "Create" at the bottom to create the recipe post!<br />
