@@ -15,7 +15,7 @@ You can either run the project locally, or open it using this link: [https://coo
 
 ## Software Dependencies
 * Any text editor
-* [NodeJS & npm](https://www.npmjs.com/get-npm)
+* [NodeJS & npm](https://nodejs.org/en/download/)
 * [MongoDB Community Server](https://www.mongodb.com/try/download/community)
 * [MongoDB Compass (Optional)](https://www.mongodb.com/try/download/compass)
 
